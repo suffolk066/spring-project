@@ -2,8 +2,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
     
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<c:set var="contextPath" value="${pageContext.request.contextPath}"/>
+
 <%
 	String playList = MovieShuffle.shuffle();
 	String[] movies = playList.split(",");
@@ -12,7 +11,22 @@
 <%@include file="../include/header.jspf" %>
 
 <script>
-  $(document).ready(function(){
+$(document).ready(function(){
+	/* 위로가기 버튼 이벤트 */
+	$(window).scroll(function() {
+	    if ($(this).scrollTop() > 100) {
+	        $("#div_top").fadeIn();
+	    } else {
+	        $("#div_top").fadeOut();
+	    }
+	});
+	/* 위로가기 버튼 이벤트 */
+	$("#a_top").click(function(e) {
+		e.preventDefault();
+		$("html, body").animate({scrollTop:0}, "100");
+	});
+	
+	/* 상영예정 및 현재 상영작 캐러셀 이벤트 */
 	  $("#pre").hide();
 	  $("#a_now").css("color", "#ec6090");
 	  $("#a_pre").click(function(e){
@@ -35,8 +49,14 @@
 		  $(this).css("color", "#ec6090");
 		  $("#a_pre").css("color", "#CCC");
 	  });
-  });
+});
 </script>
+<div  id="div_top" style="position: fixed; right: 2%; bottom: 50px; cursor: pointer;
+	display: none; z-index: 999;">
+	<div class="main-button" style="opacity: 0.5">
+		<a id="a_top" href="#"><i class="fa-solid fa-chevron-up"></i></a>
+	</div>
+</div>
 <div class="container">
     <div class="row">
       <div class="col-lg-12">
@@ -50,7 +70,7 @@
                   <h4><em>상영 및 상영예정</em> 예고편</h4>
                 </div>
                 <div>
-                	<iframe frameborder="0" width="100%" height="300px" title="예고편"
+                	<iframe frameborder="0" width="100%" height="500px" title="예고편"
                 	src="
                 	https://www.youtube.com/embed/<%=firstMovie %>?
 					autoplay=1&
@@ -72,14 +92,14 @@
           
           
           <!-- ***** 현재&예정 영화 시작***** -->
-          <div class="start-stream" >
+          <div class="start-stream" style="margin-top: 30px" >
             <div class="row">
              <div class="col-lg-12">
               <div class="featured-games header-text">
                 <div class="heading-section">
 	               <h4><em><a href="#" id="a_now">현재 상영작</a></em><a href="#" id="a_pre">예정 상영작</a></h4>
                 </div>
-                <!-- 현재 영화 -->
+                <!-- ***** 현재 영화 ***** -->
                 <div id="now">
                  <div class="owl-features owl-carousel">
                	 <!-- 영화 한 편 시작-->
@@ -98,12 +118,11 @@
 	                   </div>
 	              <!-- 영화 한 편 끝 -->
                  </div>
-                </div>
+                </div><!--***** 상영작 ***** -->
             
-          		<!-- ***** Start Stream End ***** -->
           		<!-- ***** 예정 영화 ***** -->
           		<div id="pre">
-	                <div class="owl-features owl-carousel"  id="owl">
+	                <div class="owl-features owl-carousel">
 	               	 <!-- 영화 한 편 시작-->
 		                  <div class="item">
 		                    <div class="thumb">
@@ -128,7 +147,7 @@
           <!-- ***** 현재&예정 영화 끝 ***** -->
           
           <!-- ***** 메인: 이벤트 캐러셀 시작 ***** -->
-          <div class="row">
+          <div class="row" style="margin-top: 30px">
             <div class="col-lg-12">
               <div class="featured-games header-text">
                 <div class="heading-section">
@@ -202,7 +221,7 @@
           <!-- ***** 메인: 이벤트 캐러셀 끝 ***** -->
           
            <!-- ***** 메인: 스토어 시작 ***** -->
-          <div class="row">
+          <div class="row" style="margin-top: 30px">
             <div class="col-lg-4">
               <div class="top-downloaded">
                 <div class="heading-section">
@@ -260,7 +279,80 @@
           </div>
           <!-- ***** 메인: 스토어 끝 ***** -->
           
-          
+          <!-- ***** 우수 소원 소개 *****  -->
+          <div class="featured-games header-text row mb-5"  style="margin-top: 30px">
+			
+		  		<div class="heading-section">
+					<h4><em>우수사원 소개</em> / 푸터 화면</h4>
+				</div>
+				
+				<div class="start-stream col-md-4 mb-5">
+					<div class="card" style="background-color: black;">
+						<img src="https://source.unsplash.com/random/1920x1080" class="card-img-top" alt="...">
+						<div class="card-body">
+							<h5 class="card-title">카드 타이틀</h5>
+							<p class="card-text">카드 설명</p>
+							<div class="main-button">
+								<a href="#">버튼</a>
+							</div>
+						</div>
+					</div>
+				</div>
+				
+				<div class="start-stream col-md-4 mb-5">
+					<div class="card" style="background-color: black;">
+						<img src="https://source.unsplash.com/random/1920x1080" class="card-img-top" alt="...">
+						<div class="card-body">
+							<h5 class="card-title">카드 타이틀</h5>
+							<p class="card-text">카드 설명</p>
+							<div class="main-button">
+								<a href="#">버튼</a>
+							</div>
+						</div>
+					</div>
+				</div>
+				
+				<div class="start-stream col-md-4 mb-5">
+					<div class="card" style="background-color: black;">
+						<img src="https://source.unsplash.com/random/1920x1080" class="card-img-top" alt="...">
+						<div class="card-body">
+							<h5 class="card-title">카드 타이틀</h5>
+							<p class="card-text">카드 설명</p>
+							<div class="main-button">
+								<a href="#">버튼</a>
+							</div>
+						</div>
+					</div>
+				</div>
+				
+				<div class="start-stream col-md-4 mb-5">
+					<div class="card" style="background-color: black;">
+						<img src="https://source.unsplash.com/random/1920x1080" class="card-img-top" alt="...">
+						<div class="card-body">
+							<h5 class="card-title">카드 타이틀</h5>
+							<p class="card-text">카드 설명</p>
+							<div class="main-button">
+								<a href="#">버튼</a>
+							</div>
+						</div>
+					</div>
+				</div>
+				
+				<div class="start-stream col-md-4 mb-5">
+					<div class="card" style="background-color: black;">
+						<img src="https://source.unsplash.com/random/1920x1080" class="card-img-top" alt="...">
+						<div class="card-body">
+							<h5 class="card-title">카드 타이틀</h5>
+							<p class="card-text">카드 설명</p>
+							<div class="main-button">
+								<a href="#">버튼</a>
+							</div>
+						</div>
+					</div>
+				</div>
+		
+		  </div>
+          <!-- ***** 우수 소원 소개 끝 *****  -->
 
         </div>
       </div>

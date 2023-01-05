@@ -6,7 +6,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 @Controller
 @RequestMapping(value = "/movie/*")
-public class SampleController {
+public class MainController {
 	
 	@RequestMapping(value = "/main", method = RequestMethod.GET)
 	public String testTeaser() {
