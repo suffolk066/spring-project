@@ -12,51 +12,41 @@
 
 <script>
 $(document).ready(function(){
-	/* 위로가기 버튼 이벤트 */
-	$(window).scroll(function() {
-	    if ($(this).scrollTop() > 100) {
-	        $("#div_top").fadeIn();
-	    } else {
-	        $("#div_top").fadeOut();
-	    }
-	});
-	/* 위로가기 버튼 이벤트 */
-	$("#a_top").click(function(e) {
-		e.preventDefault();
-		$("html, body").animate({scrollTop:0}, "100");
-	});
 	
-	/* 상영예정 및 현재 상영작 캐러셀 이벤트 */
-	  $("#pre").hide();
-	  $("#a_now").css("color", "#ec6090");
-	  $("#a_pre").click(function(e){
-		  console.log("a_pre");
- 		  e.preventDefault();
- 		  $("#pre").show();
- 		  $("#now").hide();
-		  $("#a_now").unwrap("<em></em>");
-		  $(this).wrap("<em></em>");
-		  $(this).css("color", "#ec6090");
-		  $("#a_now").css("color", "#CCC");
-	  });
-	  $("#a_now").click(function(e){
-		  console.log("p_now");
-		  e.preventDefault();
-		  $("#now").show();
- 		  $("#pre").hide();
-		  $("#a_pre").unwrap("<em></em>");
-		  $(this).wrap("<em></em>");
-		  $(this).css("color", "#ec6090");
-		  $("#a_pre").css("color", "#CCC");
-	  });
+	 /* 상영예정 및 현재 상영작 캐러셀 이벤트 */
+	   var toggle_command = false;
+	   $("#pre").hide();
+	   $("#a_now").css("color", "#ec6090");
+	   
+	   $("#a_pre").click(function(e){
+	      console.log("a_pre");
+	      e.preventDefault();
+	      if (toggle_command == true) return;
+	      $("#pre").show();
+	      $("#now").hide();
+	      $("#a_now").unwrap("<em></em>");
+	      $(this).wrap("<em></em>");
+	      $(this).css("color", "#ec6090");
+	      $("#a_now").css("color", "#CCC");
+	      toggle_command = true;
+	      console.log(toggle_command)
+	   });   
+	   
+	   $("#a_now").click(function(e){
+	      console.log("p_now");
+	      e.preventDefault();
+	      if (toggle_command == false) return;
+	      $("#now").show();
+	      $("#pre").hide();
+	      $("#a_pre").unwrap("<em></em>");
+	      $(this).wrap("<em></em>");
+	      $(this).css("color", "#ec6090");
+	      $("#a_pre").css("color", "#CCC");
+	      toggle_command = false;
+	      console.log(toggle_command)
+	   });
 });
 </script>
-<div  id="div_top" style="position: fixed; right: 2%; bottom: 50px; cursor: pointer;
-	display: none; z-index: 999;">
-	<div class="main-button" style="opacity: 0.5">
-		<a id="a_top" href="#"><i class="fa-solid fa-chevron-up"></i></a>
-	</div>
-</div>
 <div class="container">
     <div class="row">
       <div class="col-lg-12">

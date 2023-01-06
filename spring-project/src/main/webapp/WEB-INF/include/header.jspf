@@ -25,6 +25,7 @@
     <link rel="stylesheet" href="/assets/css/templatemo-cyborg-gaming.css">
     <link rel="stylesheet" href="/assets/css/owl.css">
     <link rel="stylesheet" href="/assets/css/animate.css">
+    <link rel="stylesheet" href="/assets/css/kkh.css">
     <link rel="stylesheet"href="https://unpkg.com/swiper@7/swiper-bundle.min.css"/>
 <!--
 
@@ -41,19 +42,43 @@ https://templatemo.com/tm-579-cyborg-gaming
   <script src="/assets/js/tabs.js"></script>
   <script src="/assets/js/popup.js"></script>
   <script src="/assets/js/custom.js"></script>
+  
+  <script>
+  $(function() {
+	  /* 위로가기 버튼 이벤트 */
+		$(window).scroll(function() {
+		    if ($(this).scrollTop() > 100) {
+		        $("#div_top").fadeIn();
+		    } else {
+		        $("#div_top").fadeOut();
+		    }
+		});
+		/* 위로가기 버튼 이벤트 */
+		$("#a_top").click(function(e) {
+			e.preventDefault();
+			$("html, body").animate({scrollTop:0}, "300");
+		});
+  });
+  </script>
   </head>
 
 <body>
   <!-- ***** Header Area Start ***** -->
 <!--   <header class="header-area header-sticky"> -->
-<div class="header-area header-sticky">
+	<div  id="div_top" style="position: fixed; right: 2%; bottom: 50px; cursor: pointer;
+		display: none; z-index: 999;">
+		<div class="main-button" style="opacity: 0.5">
+			<a id="a_top" href="#"><i class="fa-solid fa-chevron-up"></i></a>
+		</div>
+	</div>
+<header class="header-area header-sticky" style="margin-bottom: 20px">
     <div class="container">
         <div class="row">
             <div class="col-12">
                 <nav class="main-nav">
                     <!-- ***** Logo Start ***** -->
-                    <a href="#" class="logo" style="text-align:center">
-                        <img src="/assets/images/logo.png" alt="로고">
+                    <a href="/movie/main" class="logo" style="text-align:center">
+                        <img src="/assets/images/newlogo_transparent.png" alt="로고"  style="height: 70px">
                     </a>
                     <!-- ***** Logo End ***** -->
                     <!-- ***** Search End ***** -->
@@ -66,11 +91,11 @@ https://templatemo.com/tm-579-cyborg-gaming
                     <!-- ***** Search End ***** -->
                     <!-- ***** Menu Start ***** -->
                     <ul class="nav" >
-                        <li><a href="#">영화</a></li>
-                        <li><a href="#">예매</a></li>
-                        <li><a href="#">이벤트</a></li>
+                        <li><a href="list">영화</a></li>
+                        <li><a href="booking">예매</a></li>
+                        <li><a href="event">이벤트</a></li>
                         <li><a href="#">스토어</a></li>
-                        <li><a href="#">극장 </a></li>
+                        <li><a href="#">고객센터 </a></li>
                         <li><a href="login">로그인
                         <img src="/assets/images/profile-header.jpg" alt="login"></a></li>
                     </ul>   
@@ -79,5 +104,6 @@ https://templatemo.com/tm-579-cyborg-gaming
             </div>
         </div>
     </div>
+</header>
 <!--   </header> -->
   <!-- ***** Header Area End ***** -->

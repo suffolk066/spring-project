@@ -1,0 +1,33 @@
+@charset "UTF-8";
+
+#btnChecked {
+    font-size: 14px;
+    color: #fff;
+    background-color: #e75e8d;
+    padding: 12px 30px;
+    display: inline-block;
+    border-radius: 25px;
+    font-weight: 400;
+    text-transform: capitalize;
+    letter-spacing: 0.5px;
+    transition: all .3s;
+    position: relative;
+    overflow: hidden;
+}
+
+.label {
+	font-size:20px;
+	color:white;
+}
+
+.align-self-center {
+	margin-left: 140px
+}
+
+#userid, #userpw, #userpw2, #name {
+	padding-left:20px;
+}
+#btnregister {
+	color:white;
+}
+

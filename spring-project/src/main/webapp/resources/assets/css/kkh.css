@@ -1,0 +1,49 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900");
+/* 
+	kkh.css
+*/
+
+/* 티켓팅 페이징(날짜)...  */
+.pagination {
+  display: inline-block;
+}
+.pagination a {
+  color: white;
+  float: left;
+  padding: 8px 16px;
+  text-decoration: none;
+  border: 1px solid #c73898;
+}
+.pagination a.active {
+  background-color: #4CAF50;
+  color: white;
+  border: 1px solid #4CAF50;
+}
+.pagination a:hover:not(.active) {background-color: #e2c9f1;}
+.pagination a:first-child {
+  border-top-left-radius: 5px;
+  border-bottom-left-radius: 5px;
+}
+.pagination a:last-child {
+  border-top-right-radius: 5px;
+  border-bottom-right-radius: 5px;
+}
+/* 티켓팅 th */
+.ticketing-theader {
+	font-family: 'Poppins', sans-serif;
+	text-align: center;
+	position: sticky;
+	top: 0;
+	color: #e75e8d;
+	background-color: #666;
+}
+/* 티켓팅 스크롤바 숨기기 */
+.ticketing-list{
+	background-color: white;
+	overflow-y: scroll; 
+	height: 200px;
+   -ms-overflow-style: none;
+}
+.ticketing-list::-webkit-scrollbar{
+  display:none;
+}
