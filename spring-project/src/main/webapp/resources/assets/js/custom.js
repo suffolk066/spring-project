@@ -23,18 +23,23 @@
         }
     });
 
+	// 스크롤하면 헤더 빛나는 부분
 	$(window).scroll(function() {
 	  var scroll = $(window).scrollTop();
 	  var box = $('.header-text').height();
 	  var header = $('header').height();
+	  // console.log(scroll); // 자기 마우스 스크롤
+	  // console.log(box); // 상영 및 상영예정 예고편 박스 높이
+	  // console.log(header); // 헤더 높이
 
+	  // 스크롤 높이가 (박스-헤더)보다 크거나 같으면
 	  if (scroll >= box - header) {
 	    $("header").addClass("background-header");
 	  } else {
 	    $("header").removeClass("background-header");
 	  }
 	});
-	
+
 	$('.filters ul li').click(function(){
         $('.filters ul li').removeClass('active');
         $(this).addClass('active');
@@ -206,8 +211,7 @@
 	    var scrollPos = $(document).scrollTop();
 	    $('.nav a').each(function () {
 	        var currLink = $(this);
-	        var refElement = $(currLink.attr("href"));
-	        if (refElement.position().top <= scrollPos && refElement.position().top + refElement.height() > scrollPos) {
+	        if (currLink.position().top <= scrollPos && currLink.position().top + currLink.height() > scrollPos) {
 	            $('.nav ul li a').removeClass("active");
 	            currLink.addClass("active");
 	        }
