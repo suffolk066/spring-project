@@ -57,7 +57,7 @@ $(document).ready(function(){
             <div class="col-lg-12">
               <div class="featured-games header-text">
                 <div class="heading-section">
-                  <h4><em>상영 및 상영예정</em> 예고편</h4>
+                  <h4><span style="color: white">상영 및 상영예정</span> 예고편</h4>
                 </div>
                 <div>
                 	<iframe frameborder="0" width="100%" height="500px" title="예고편"
@@ -87,7 +87,7 @@ $(document).ready(function(){
              <div class="col-lg-12">
               <div class="featured-games header-text">
                 <div class="heading-section">
-	               <h4><em><a href="#" id="a_now">현재 상영작</a></em><a href="#" id="a_pre">예정 상영작</a></h4>
+	               <h4><em><a href="#" id="a_now" style="margin-right: 35px">현재 상영작</a></em><a href="#" id="a_pre">예정 상영작</a></h4>
                 </div>
                 <!-- ***** 현재 영화 ***** -->
                 <div id="now">
@@ -141,7 +141,7 @@ $(document).ready(function(){
             <div class="col-lg-12">
               <div class="featured-games header-text">
                 <div class="heading-section">
-                  <h4><em>Movie</em> Event</h4>
+                  <h4><span style="color: white">Today</span> Event</h4>
                 </div>
                 <div class="owl-features owl-carousel">
                   <div class="item">
@@ -273,7 +273,7 @@ $(document).ready(function(){
           <div class="featured-games header-text row mb-5"  style="margin-top: 30px">
 			
 		  		<div class="heading-section">
-					<h4><em>우수사원 소개</em> / 푸터 화면</h4>
+					<h4>이달의 우수 사원</h4>
 				</div>
 				
 				<div class="start-stream col-md-4 mb-5">
