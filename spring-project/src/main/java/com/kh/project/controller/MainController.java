@@ -73,4 +73,5 @@ public class MainController {
 	@RequestMapping(value = "/mypage", method = RequestMethod.GET)
 	public String showMypage() {
 		return "mypage";
+	}
 }
