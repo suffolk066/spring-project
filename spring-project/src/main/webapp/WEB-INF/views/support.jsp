@@ -1,7 +1,6 @@
 <%@page import="com.kh.project.util.MovieShuffle"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-    
 
 <%@include file="../include/header.jspf" %>
 <script>
@@ -68,7 +67,7 @@ $(function() {
       <div class="col-lg-12">
         <div class="page-content">
         
-        	<!--***** 공지사항 시작  *****-->
+      	<!--***** 공지사항 시작  *****-->
 			<div class="live-stream" style="margin-top: 0px">
               	<div class="heading-section row">
 		            <div class="col-lg-8">
@@ -92,7 +91,7 @@ $(function() {
 	            </div>
 	         </div> 
 	         <!--***** 공지사항 끝  *****-->
-	         
+           
 	        <!--***** 자주하는 질문 시작  *****-->
 			<div class="live-stream" style="margin-top: 35px">
               	<div class="heading-section row">
@@ -117,9 +116,9 @@ $(function() {
 	            </div>
 	         </div> 
 	         <!--***** 자주하는 질문 끝  *****-->
-	         
+           
 	        <!--***** Q&A 시작  *****--> 
-			<div class="live-stream" style="margin-top: 35px">
+			    <div class="live-stream" style="margin-top: 35px">
               	<div class="heading-section row">
 		            <div class="col-lg-8">
 	              		<h4>Q<span style="color: #fff; font-size: 34px">&</span>A</h4>
@@ -165,8 +164,8 @@ $(function() {
 	            </div>
 	         </div>
 	         <!--***** Q&A 끝  *****-->
-	          
-	   </div>
+           
+	     </div>
      </div>
    </div>
 </div>          
