@@ -55,4 +55,10 @@ public class MainController {
 	public String goSupportPage() {
 		return "support";
 	}
+	
+	@RequestMapping(value = "/mypage", method = RequestMethod.GET)
+	public String showMypage() {
+		return "mypage";
+	}
+	
 }
