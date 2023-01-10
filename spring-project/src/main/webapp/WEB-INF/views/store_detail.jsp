@@ -8,7 +8,7 @@
 	// 선택한 값 같이 넘어가게 처리하기
 	 $("#btnStoreCart").click(function() {
 
-	 }
+	 });
 			 
   });
   
@@ -36,9 +36,9 @@
                   <h4>영화관람권</h4>
                 </div>
                 <ul>
-					<li><img src="../images/storeTicketA.png" alt="storeTicketA"></li>
-					<li><img src="../images/storeTicketB.png" alt="storeTicketB"></li>
-					<li><img src="../images/storeTicketC.png" alt="storeTicketC"></li>
+					<li><img src="/assets/images/storeTicketA.png" alt="storeTicketA"></li>
+					<li><img src="/assets/images/storeTicketB.png" alt="storeTicketB"></li>
+					<li><img src="/assets/images/storeTicketC.png" alt="storeTicketC"></li>
 				</ul>
               </div>
             </div>
@@ -48,9 +48,9 @@
                   <h4>기프트카드</h4>
                 </div>
                 <ul>
-					<li><img src="../images/storeCardTypeA.png" alt="storeCardTypeA"></li>
-					<li><img src="../images/storeCardTypeB.png" alt="storeCardTypeB"></li>
-					<li><img src="../images/storeCardTypeC.png" alt="storeCardTypeC"></li>
+					<li><img src="/assets/images/storeCardTypeA.png" alt="storeCardTypeA"></li>
+					<li><img src="/assets/images/storeCardTypeB.png" alt="storeCardTypeB"></li>
+					<li><img src="/assets/images/storeCardTypeC.png" alt="storeCardTypeC"></li>
 				</ul>
               </div>
             </div>
@@ -60,9 +60,9 @@
                   <h4>스낵</h4>
                 </div>
                 <ul>
-					<li><img src="../images/storeSnackPopcorn.png" alt="storeSnackPopcorn"></li>
-					<li><img src="../images/storeSnackHotdog.png" alt="storeSnackHotdog"></li>
-					<li><img src="../images/storeSnackNacho.png" alt="storeSnackNacho"></li>
+					<li><img src="/assets/images/storeSnackPopcorn.png" alt="storeSnackPopcorn"></li>
+					<li><img src="/assets/images/storeSnackHotdog.png" alt="storeSnackHotdog"></li>
+					<li><img src="/assets/images/storeSnackNacho.png" alt="storeSnackNacho"></li>
 				</ul>
               </div>
             </div>
@@ -72,9 +72,9 @@
                   <h4>음료</h4>
                 </div>
                 <ul>
-					<li><img src="../images/storeSnackPopcorn.png" alt="storeSnackPopcorn"></li>
-					<li><img src="../images/storeSnackHotdog.png" alt="storeSnackHotdog"></li>
-					<li><img src="../images/storeSnackNacho.png" alt="storeSnackNacho"></li>
+					<li><img src="/assets/images/storeSnackPopcorn.png" alt="storeSnackPopcorn"></li>
+					<li><img src="/assets/images/storeSnackHotdog.png" alt="storeSnackHotdog"></li>
+					<li><img src="/assets/images/storeSnackNacho.png" alt="storeSnackNacho"></li>
 				</ul>
               </div>
             </div>
