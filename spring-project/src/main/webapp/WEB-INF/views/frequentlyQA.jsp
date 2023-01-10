@@ -34,7 +34,7 @@ $(function() {
 		            <div class="col-lg-8">
 	              		<h4>자주하는 질문</h4>
 	              	</div>	
-	                <div class="col-lg-4 main-button" style="text-align: right">
+	                <!-- <div class="col-lg-4 main-button" style="text-align: right">
 	                	<div class="row">
 		                	<div class="col-md-8">
 		                		<input type="text" class="form-control" style="width: 100%; margin-top: 5px"/>
@@ -43,7 +43,7 @@ $(function() {
 		                		<a href="#"><i class="fa fa-search fa-lg" aria-hidden="true"></i></a>
 		                	</div>
 	                	</div>
-	                </div>
+	                </div> -->
 	            </div>
 	            
 	            <div class="row">

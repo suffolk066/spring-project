@@ -59,11 +59,7 @@ $(function() {
         	<div style=" float: left;">
         		<a href="support"><i class="fa fa-reply fa-2x" aria-hidden="true"></i></a>
         	</div>
-        	<div style="float: right; text-align: right">	
-        		<!-- modal, page... 뭐가 편하지....  -->
-        		
-       			<a id="a_wirte" href="#"><i class="fa fa-pencil fa-2x" aria-hidden="true"></i></a>
-       		</div>	
+        	
        		
         	<!--***** Q&A 시작  *****--> 
 			<div class="live-stream" style="margin-top: 50px">
@@ -71,10 +67,12 @@ $(function() {
 		            <div class="col-lg-8">
 	              		<h4>Q<span style="color: #fff; font-size: 34px">&</span>A</h4>
 	              	</div>	
-	                <div class="col-lg-4 main-button" style="text-align: right">
+	              	<div class="col-lg-4 main-button" style="text-align: right">
+		       			<a id="a_wirte" href="#"><i class="fa fa-pencil fa-2x" aria-hidden="true"></i></a>
+		       		</div>	
+	               <!--  <div class="col-lg-4 main-button" style="text-align: right">
 	                	<div class="row">
 		                	<div class="dropdown col-md-3" style="text-align: left; margin-top: 5px">
-		                		<!-- 드롭다운 넣어 말아,.. 콤보박스?  -->
 		                	</div>	
 		                	<div class="col-md-6">
 		                		<input type="text" class="form-control" style="width: 100%; margin-top: 5px"/>
@@ -83,7 +81,7 @@ $(function() {
 		                		<a href="#"><i class="fa fa-search fa-lg" aria-hidden="true"></i></a>
 		                	</div>
 	                	</div>
-	                </div>
+	                </div> -->
 	              	
 	            </div>
 	            
@@ -124,6 +122,17 @@ $(function() {
 	            		</c:forEach>	
 	            	</div>
 	            </div>
+		         <div style="margin-top: 15px; text-align: center"> <!-- 페이징 시작  -->
+		         	<div class="pagination">
+					  <a href="#">&laquo;</a>
+					  <c:forEach var="i" begin="1" end="5">
+					  	<a href="#"
+					  		<c:if test="${i eq 1 }">style="background-color: #ccc"</c:if>
+					  	>${i}</a>
+					  </c:forEach>
+					  <a href="#">&raquo;</a>
+					</div>
+		         </div><!-- 페이징 끝  -->
 	         </div>
         	 <!--***** Q&A 끝  *****-->	
 	        
@@ -156,8 +165,8 @@ $(function() {
 			
 			    </div>
 			  </div>
-			</div> <!-- 모달 끝  -->
-			
+			</div> 
+			<!-- 모달 끝  -->
         </div>
       </div>
     </div>
