@@ -52,7 +52,7 @@ public class MainController {
 	}
 	
 	@RequestMapping(value = "/support", method = RequestMethod.GET)
-	public String goSupportPage() {
+	public String goSupportPage(String page) {
 		if(page != null) {
 			if (page.equals("frequentlyQ")) {
 				return "frequentlyQA";
@@ -73,6 +73,4 @@ public class MainController {
 	@RequestMapping(value = "/mypage", method = RequestMethod.GET)
 	public String showMypage() {
 		return "mypage";
-	}
-	
 }
