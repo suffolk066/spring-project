@@ -64,4 +64,9 @@ public class MainController {
 		}
 		return "support";
 	}
+	
+	@RequestMapping(value = "/admin", method = RequestMethod.GET)
+	public String showAdmin() {
+		return "admin";
+	}
 }
