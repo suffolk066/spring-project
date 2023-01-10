@@ -69,4 +69,16 @@ public class MainController {
 	public String showAdmin() {
 		return "admin";
 	}
+	
+	@RequestMapping(value = "/store", method = RequestMethod.GET)
+	public String storeDetail() {
+		return "store_detail";
+		
+	}
+	
+	@RequestMapping(value = "/storecart", method = RequestMethod.GET)
+	public String storeBasket() {
+		return "store_cart";
+		
+	}
 }
