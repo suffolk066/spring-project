@@ -53,7 +53,21 @@ public class MainController {
 	
 	@RequestMapping(value = "/support", method = RequestMethod.GET)
 	public String goSupportPage() {
+		if(page != null) {
+			if (page.equals("frequentlyQ")) {
+				return "frequentlyQA";
+			} else if (page.equals("notice")) {
+				return "notice";
+			} else if (page.equals("qa-board")) {
+				return "qa-board";
+			}
+		}
 		return "support";
+	}
+	
+	@RequestMapping(value = "/admin", method = RequestMethod.GET)
+	public String showAdmin() {
+		return "admin";
 	}
 	
 	@RequestMapping(value = "/mypage", method = RequestMethod.GET)
