@@ -2,7 +2,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 
-
 <%@include file="../include/header.jspf" %>
 <script>
 $(function() {
@@ -67,19 +66,19 @@ $(function() {
     <div class="row">
       <div class="col-lg-12">
         <div class="page-content">
-
-        	<!--***** 공지사항 시작  *****-->
+        
+      	<!--***** 공지사항 시작  *****-->
 			<div class="live-stream" style="margin-top: 0px">
               	<div class="heading-section row">
 		            <div class="col-lg-8">
 	              		<h4>공지사항</h4>
 	              	</div>	
 	                <div class="col-lg-4 main-button" style="text-align: right">
-	                	<a href="#"><i class="fa fa-ellipsis-h fa-lg" aria-hidden="true"></i></a>
+	                	<a href="support?page=notice"><i class="fa fa-ellipsis-h fa-lg" aria-hidden="true"></i></a>
 	                </div>
-
+	              	
 	            </div>
-
+	            
 	            <div class="row">
 	            	<div class="col-lg-12">
 	            		<c:forEach begin="1" end="5" var="i">
@@ -92,7 +91,7 @@ $(function() {
 	            </div>
 	         </div> 
 	         <!--***** 공지사항 끝  *****-->
-
+           
 	        <!--***** 자주하는 질문 시작  *****-->
 			<div class="live-stream" style="margin-top: 35px">
               	<div class="heading-section row">
@@ -100,11 +99,11 @@ $(function() {
 	              		<h4>자주하는 질문</h4>
 	              	</div>	
 	                <div class="col-lg-4 main-button" style="text-align: right">
-	                	<a href="#"><i class="fa fa-ellipsis-h fa-lg" aria-hidden="true"></i></a>
+	                	<a href="support?page=frequentlyQ"><i class="fa fa-ellipsis-h fa-lg" aria-hidden="true"></i></a>
 	                </div>
-
+	              	
 	            </div>
-
+	            
 	            <div class="row">
 	            	<div class="col-lg-12">
 	            		<c:forEach begin="1" end="5" var="i">
@@ -117,19 +116,19 @@ $(function() {
 	            </div>
 	         </div> 
 	         <!--***** 자주하는 질문 끝  *****-->
-
+           
 	        <!--***** Q&A 시작  *****--> 
-			<div class="live-stream" style="margin-top: 35px">
+			    <div class="live-stream" style="margin-top: 35px">
               	<div class="heading-section row">
 		            <div class="col-lg-8">
 	              		<h4>Q<span style="color: #fff; font-size: 34px">&</span>A</h4>
 	              	</div>	
 	                <div class="col-lg-4 main-button" style="text-align: right">
-	                	<a href="#"><i class="fa fa-ellipsis-h fa-lg" aria-hidden="true"></i></a>
+	                	<a href="support?page=qa-board"><i class="fa fa-ellipsis-h fa-lg" aria-hidden="true"></i></a>
 	                </div>
-
+	              	
 	            </div>
-
+	            
 	            <div class="row">
 	            	<div class="col-lg-12">
 	            		<c:forEach begin="1" end="5" var="i">
@@ -137,10 +136,10 @@ $(function() {
 	            				margin: 10px">Q${i}. 유저질문${i} 입니다. 
 	            				<c:choose>
 	            					<c:when test="${i eq 3}">
-	            						<span style="font-size: x-large;">[답변 완료]</span>
+	            						<span style="font-size: x-large; margin-left: 20px">[답변 완료]</span>
 	            					</c:when>
 	            					<c:otherwise>
-	            						<span style="font-size: x-large;">[대기중]</span>
+	            						<span style="font-size: x-large; margin-left: 20px">[대기중]</span>
 	            					</c:otherwise>
 	            				</c:choose>
             				</p>
@@ -165,8 +164,8 @@ $(function() {
 	            </div>
 	         </div>
 	         <!--***** Q&A 끝  *****-->
-
-	   </div>
+           
+	     </div>
      </div>
    </div>
 </div>          

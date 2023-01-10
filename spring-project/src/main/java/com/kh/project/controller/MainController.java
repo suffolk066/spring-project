@@ -50,4 +50,18 @@ public class MainController {
 	public String showEventDetail() {
 		return "event_detail";
 	}
+	
+	@RequestMapping(value = "/support", method = RequestMethod.GET)
+	public String goSupportPage(String page) {
+		if(page != null) {
+			if (page.equals("frequentlyQ")) {
+				return "frequentlyQA";
+			} else if (page.equals("notice")) {
+				return "notice";
+			} else if (page.equals("qa-board")) {
+				return "qa-board";
+			}
+		}
+		return "support";
+	}
 }
