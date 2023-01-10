@@ -73,5 +73,14 @@ public class MainController {
 	@RequestMapping(value = "/mypage", method = RequestMethod.GET)
 	public String showMypage() {
 		return "mypage";
+
+	@RequestMapping(value = "/store", method = RequestMethod.GET)
+	public String storeDetail() {
+		return "store_detail";
+	}
+	
+	@RequestMapping(value = "/storecart", method = RequestMethod.GET)
+	public String storeBasket() {
+		return "store_cart";
 	}
 }
