@@ -226,7 +226,7 @@ $(document).ready(function(){
                </li>
             </ul>
                 <div class="text-button">
-                  <a href="/movie/storedetail">스토어로 이동</a>
+                  <a href="/movie/store">스토어로 이동</a>
                 </div>
               </div>
             </div>
@@ -244,7 +244,7 @@ $(document).ready(function(){
                </li>
             </ul>
                 <div class="text-button">
-                  <a href="/movie/storedetail">스토어로 이동</a>
+                  <a href="/movie/store">스토어로 이동</a>
                 </div>
               </div>
             </div>
@@ -262,7 +262,7 @@ $(document).ready(function(){
                </li>
             </ul>
                 <div class="text-button">
-                  <a href="/movie/storedetail">스토어로 이동</a>
+                  <a href="/movie/store">스토어로 이동</a>
                 </div>
               </div>
             </div>
