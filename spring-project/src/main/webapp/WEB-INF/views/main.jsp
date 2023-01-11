@@ -148,7 +148,7 @@ $(document).ready(function(){
                     <div class="thumb">
                       <img src="/assets/images/eventJoin.png" alt="eventJoin">
                       <div class="hover-effect">
-                        <h6><a href="/sj/joindetail">해당 이벤트로 이동</a></h6>
+                        <h6><a href="${contextPath}/movie/event_detail?event=join">해당 이벤트로 이동</a></h6>
                       </div>
                     </div>
                     <h4>회원가입 인증 할인<br><span>애용해주세요♥</span></h4>
@@ -160,7 +160,7 @@ $(document).ready(function(){
                     <div class="thumb">
                       <img src="/assets/images/eventParking.png" alt="eventParking">
                       <div class="hover-effect">
-                         <h6><a href="/sj/parkingdetail">해당 이벤트로 이동</a></h6>
+                         <h6><a href="${contextPath}/movie/event_detail?event=parking">해당 이벤트로 이동</a></h6>
                       </div>
                     </div>
                     <h4>무료 주차 4시간<br><span>아바타도 끄덕없다</span></h4>
@@ -172,7 +172,7 @@ $(document).ready(function(){
                     <div class="thumb">
                       <img src="/assets/images/eventStudents.png" alt="eventStudents">
                       <div class="hover-effect">
-                         <h6><a href="/sj/studentsdetail">해당 이벤트로 이동</a></h6>
+                         <h6><a href="${contextPath}/movie/event_detail?event=students">해당 이벤트로 이동</a></h6>
                       </div>
                     </div>
                    <h4>학생증 할인<br><span>고생했어 오늘도~♬</span></h4>
@@ -184,7 +184,7 @@ $(document).ready(function(){
                     <div class="thumb">
                       <img src="/assets/images/eventWelcome.png" alt="eventWelcome">
                       <div class="hover-effect">
-                         <h6><a href="/sj/welcomedetail">해당 이벤트로 이동</a></h6>
+                         <h6><a href="${contextPath}/movie/event_detail?event=welcome">해당 이벤트로 이동</a></h6>
                       </div>
                     </div>
                      <h4>재방문 할인<br><span>어서와 재방문은 처음이지?</span></h4>
@@ -196,7 +196,7 @@ $(document).ready(function(){
                     <div class="thumb">
                       <img src="/assets/images/eventZero.png" alt="eventZero">
                       <div class="hover-effect">
-                        <h6><a href="/sj/zerodetail">해당 이벤트로 이동</a></h6>
+                        <h6><a href="${contextPath}/movie/event_detail?event=zero">해당 이벤트로 이동</a></h6>
                       </div>
                     </div>
                      <h4>환경운동 캠페인<br><span>제로 웨이스트 동참하실래요?</span></h4>
