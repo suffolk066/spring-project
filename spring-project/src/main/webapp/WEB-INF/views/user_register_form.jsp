@@ -8,7 +8,7 @@
 
           <div class="row">
             <div class="col-lg-12">
-              <div class="top-streamers">
+              <div class="top-streamers" style="max-height:700px;">
                 <div class="heading-section">
                   <h4>회원가입</h4>
                 </div>
@@ -41,12 +41,13 @@
                              <div class="col-sm-3">
                              
                            </div>
-                     </div>             
-                           <div style="display:none" id=userpwCheck>비밀번호가 다릅니다.</div>
+                     </div>   
+                     <!-- 비밀번호 일치 불일치 따라message출력 -->          
+                           <div id=userpwCheck>message</div>
                   </li>
                   <li>   
                      <label class="label">이름&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</label>
-					 <input type="text" name="name" placeholder="이름"> <br>
+					 <input type="text" id="username" name="username" placeholder="이름"> <br>
                   </li>
                   <li>
 				      <label class="label">생년월일</label>
@@ -71,18 +72,24 @@
      				 </li>
       					<li> 
      						 <label class="label">이메일&nbsp&nbsp&nbsp</label>
-     						 <input type="email" name="email" placeholder="email@gmail.com">
-     						 
-     						 <div class="main-border-button" style="padding-left:500px;">
+     						 <input type="email" id="useremail" name="useremail" placeholder="email@gmail.com">
+     					</li>
+     					<li>
+     					<div class="row">
+                                	<div class="col-sm-11 ml-3 mb-3 mb-sm-0 custom-file">
+                                	<label class="label" for="customFile">프로필사진</label>
+                                		<input type="file" class="custom-file-input" 
+                                			id="customFile" name="file">
+                                	</div>
+     						 </div>
+     					</li>
+     						 <div class="main-border-button" style="padding-left:500px">
                         <button type="submit" id="btnRegister">회원가입</button>
-                   			 </div>
-      					</li>
-      					
-			      	</ul>
-			      	
-			    </form>
-         	</div>
-			</div>
+                   			 </div>				
+				      	</ul>
+				    	</form>
+	         		</div>
+				</div>
  			</div>
 		</div>
    </div>

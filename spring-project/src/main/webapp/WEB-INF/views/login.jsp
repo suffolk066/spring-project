@@ -44,7 +44,7 @@ $(document).ready(function() {
                   <span>로그인</span>
                     <ul>
                       <li>
-                      <input type="text" title="아이디" id="loginId" name="loginId" data-title="아이디를 " data-message="입력하세요." required="required" placeholder="아이디" autofocus>
+                      <input type="text" title="아이디" id="loginid" name="loginid" data-title="아이디를 " data-message="입력하세요." required="required" placeholder="아이디" autofocus>
                       </li>
                       <li>
                       <input type="password" title="비밀번호" id="loginPw" name="loginPw" data-title="비밀번호 " data-message="입력하세요." required="required" placeholder="비밀번호 ">
@@ -66,10 +66,10 @@ $(document).ready(function() {
                   <span>비회원예매</span>
                     <ul>
                       <li>
-                      <input type="text" title="전화번호" id="guestNumber" name="guestNumber" data-title="전화번호를 " data-message="입력하세요." required="required" placeholder="전화번호">
+                      <input type="text" title="전화번호" id="guestid" name="guestid" data-title="전화번호를 " data-message="입력하세요." required="required" placeholder="전화번호">
                       </li>
                       <li>
-                      <input type="password" title="비밀번호" id="guestPw" name="guestPw" data-title="비밀번호 " data-message="입력하세요." required="required" placeholder="비밀번호 ">
+                      <input type="password" title="비밀번호" id="guestpw" name="guestpw" data-title="비밀번호 " data-message="입력하세요." required="required" placeholder="비밀번호 ">
                       </li>
                     </ul>
                     <div class="main-border-button" style="margin-top: 35px">
