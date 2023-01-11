@@ -103,6 +103,7 @@ $(document).ready(function() {
           <!-- ***** 관리 페이지 이동 끝 ***** -->
           
           <!-- ***** 대시보드 ***** -->
+          <!--
           <div class="game-details">
             <h2>대시보드(작업중)</h2>
           </div>
@@ -116,7 +117,6 @@ $(document).ready(function() {
                   <li><h4>Date Added</h4><span>24/08/2036</span></li>
                   <li><h4>Hours Played</h4><span>634 H 22 Mins</span></li>
                   <li><h4>Currently</h4><span>Downloaded</span></li>
-                  <li><div class="main-border-button"><a href="#">Donwloaded</a></div></li>
                 </ul>
               </div>
               <div class="item">
@@ -126,7 +126,6 @@ $(document).ready(function() {
                   <li><h4>Date Added</h4><span>22/06/2036</span></li>
                   <li><h4>Hours Played</h4><span>740 H 52 Mins</span></li>
                   <li><h4>Currently</h4><span>Downloaded</span></li>
-                  <li><div class="main-border-button"><a href="#">Donwload</a></div></li>
                 </ul>
               </div>
               <div class="item last-item">
@@ -136,11 +135,11 @@ $(document).ready(function() {
                   <li><h4>Date Added</h4><span>21/04/2036</span></li>
                   <li><h4>Hours Played</h4><span>892 H 14 Mins</span></li>
                   <li><h4>Currently</h4><span>Downloaded</span></li>
-                  <li><div class="main-border-button border-no-active"><a href="#">Donwloaded</a></div></li>
                 </ul>
               </div>
             </div>
           </div>
+          -->
           <!-- ***** 대시보드 End ***** -->
 
         </div>

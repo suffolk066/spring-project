@@ -8,26 +8,29 @@ $(document).ready(function(){
 	$("#pre").hide();
 	$("#a_now").css("color", "#ec6090");
 	
-	  $("#a_pre").click(function(e){
-		  console.log("a_pre");
- 		  e.preventDefault();
- 		  $("#pre").show();
- 		  $("#now").hide();
-		  $("#a_now").unwrap("<em></em>");
-		  $(this).wrap("<em></em>");
-		  $(this).css("color", "#ec6090");
-		  $("#a_now").css("color", "#CCC");
-	  });
-	  $("#a_now").click(function(e){
-		  console.log("p_now");
-		  e.preventDefault();
-		  $("#now").show();
- 		  $("#pre").hide();
-		  $("#a_pre").unwrap("<em></em>");
-		  $(this).wrap("<em></em>");
-		  $(this).css("color", "#ec6090");
-		  $("#a_pre").css("color", "#CCC");
-	  });
+	var toggle_command = false;
+	$("#a_pre").click(function(e){
+ 	  e.preventDefault();
+ 	  if (toggle_command == true) return;
+ 	  toggle_command = true;
+ 	  $("#pre").show();
+ 	  $("#now").hide();
+	  $("#a_now").unwrap("<em></em>");
+	  $(this).wrap("<em></em>");
+	  $(this).css("color", "#ec6090");
+	  $("#a_now").css("color", "#CCC");
+	});
+	$("#a_now").click(function(e){
+	  e.preventDefault();
+ 	  if (toggle_command == false) return;
+ 	  toggle_command = false;
+	  $("#now").show();
+ 	  $("#pre").hide();
+	  $("#a_pre").unwrap("<em></em>");
+	  $(this).wrap("<em></em>");
+	  $(this).css("color", "#ec6090");
+	  $("#a_pre").css("color", "#CCC");
+	});
 });
 </script>
   <div class="container">

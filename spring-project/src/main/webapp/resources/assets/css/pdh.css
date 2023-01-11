@@ -61,3 +61,34 @@
 	background-color: #e75e8d !important;
 	color: #fff;
 }
+
+.list-table {
+	color: white; 
+	text-align: center;
+	vertical-align: middle
+}
+
+.custom-modal {
+	background-color: #27292a;
+	color: white;
+}
+
+.custom-modal-header {
+	border-bottom: 1px solid #444;
+}
+
+.custom-modal-footer {
+	border-top: 1px solid #444;
+}
+
+.custom-btn {
+	background-color: #ec6090;
+	border-color: #ec6090;
+	color: white;
+}
+
+.custom-btn:hover {
+	background-color: white;
+	border-color: #e75e8d;
+	color: #e75e8d;
+}

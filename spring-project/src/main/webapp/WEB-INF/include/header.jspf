@@ -2,7 +2,7 @@
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
-<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/functions" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 
 <c:set var="contextPath" value="${pageContext.request.contextPath}"/>    
 <!DOCTYPE html>
@@ -94,13 +94,13 @@ https://templatemo.com/tm-579-cyborg-gaming
                     <!-- ***** Search End ***** -->
                     <!-- ***** Menu Start ***** -->
                     <ul class="nav" >
-                        <li><a href="list" style="color: #e75e8d">영화</a></li>
-                        <li><a href="booking" style="color: #e75e8d">예매</a></li>
-                        <li><a href="event" style="color: #e75e8d">이벤트</a></li>
-                        <li><a href="store" style="color: #e75e8d">스토어</a></li>
-                        <li><a href="support" style="color: #e75e8d">고객센터 </a></li>
-                        <li><a href="login" style="background-color: #e75e8d; color: #fff" >로그인
-                        <img src="/assets/images/profile-header.jpg" alt="login" ></a></li>
+                        <li><a href="${contextPath}/movie/list" style="color: #e75e8d">영화</a></li>
+                        <li><a href="${contextPath}/movie/booking" style="color: #e75e8d">예매</a></li>
+                        <li><a href="${contextPath}/movie/event" style="color: #e75e8d">이벤트</a></li>
+                        <li><a href="${contextPath}/movie/store" style="color: #e75e8d">스토어</a></li>
+                        <li><a href="${contextPath}/movie/support" style="color: #e75e8d">고객센터 </a></li>
+                        <li><a href="${contextPath}/movie/login" style="background-color: #e75e8d; color: #fff">로그인
+                        <img src="/assets/images/profile-header.jpg" alt="login"></a></li>
                     </ul>   
                     <!-- ***** Menu End ***** -->
                 </nav>
