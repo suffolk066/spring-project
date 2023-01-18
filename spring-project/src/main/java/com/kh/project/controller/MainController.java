@@ -1,8 +1,9 @@
 package com.kh.project.controller;
 
+import java.util.List;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
-import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -10,27 +11,21 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.context.request.RequestAttributes;
-import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
+
 import com.kh.project.service.UserService;
+import com.kh.project.vo.SampleVo;
 import com.kh.project.vo.UserVo;
 
 @Controller
 @RequestMapping(value = "/movie/*")
 public class MainController {
-
-	@Autowired
-	private SampleService service;
 	
 	@Autowired
 	private UserService userService;
 	
 	@RequestMapping(value = "/main", method = RequestMethod.GET)
-	public String showMain(Model model) {
-		List<SampleVo> list = service.getSampleList();
-		model.addAttribute("list", list);
-		System.out.println(list);
+	public String showMain() {
 		return "main";
 	}
 
@@ -91,6 +86,11 @@ public class MainController {
 		return page;
 	}
 	
+	@RequestMapping(value = "/register", method = RequestMethod.GET)
+	public String registerForm() {
+		return "user_register_form";
+	}
+	
 	@RequestMapping(value = "/register", method = RequestMethod.POST)
 	public String registerRun(UserVo vo, RedirectAttributes rttr, HttpServletRequest request) {
 
@@ -103,7 +103,7 @@ public class MainController {
 		if(0<Integer.parseInt(day) && Integer.parseInt(day)<10) {
 			day = "0"+day;
 		}
-		String userBirth = year+month+day;
+		String userBirth = year+"-"+month+"-"+day;
 		vo.setUserbirth(userBirth);
 //		System.out.println("year"+year);
 //		System.out.println("month"+month);
