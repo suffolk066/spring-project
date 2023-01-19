@@ -15,7 +15,7 @@ import com.kh.project.dao.QnaDao;
 import com.kh.project.vo.AnnVo;
 import com.kh.project.vo.PagingDto;
 import com.kh.project.vo.QnaVo;
-
+ 
 @Service
 public class QnaService {
 	
@@ -42,10 +42,10 @@ public class QnaService {
 	@Transactional
 	public boolean deleteQna(QnaVo qnaVo) {
 		int qna_no = qnaVo.getQna_no();
-		boolean commentResult = qnaCommentDao.deleteQnaComment(qna_no);
-		System.out.println("commentResult: " + commentResult);
+		//boolean commentResult = qnaCommentDao.deleteQnaComment(qna_no);
+		//System.out.println("commentResult: " + commentResult);
 		boolean qnaResult = qnaDao.deleteQna(qnaVo);
-		System.out.println("qnaResult:" + qnaResult);
+		//System.out.println("qnaResult:" + qnaResult);
 		if(qnaResult == true) {
 			return true;
 		}

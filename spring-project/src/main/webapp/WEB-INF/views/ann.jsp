@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@include file="../include/header.jspf" %>
-<style>
+<style> 
 .page-link {
 	background-color: #1f2122;
 	border-color: #1f2122;
@@ -114,10 +114,15 @@
 	<script>
 	$(document).ready(function(){
 		// 제목 10자리 이상 ..표시
-// 		if($("#title").text().length() >= 10){
-// 			var title = $("#title").text().substring(0, 10) + "...";			
-// 			$("#title").text(title);
-// 		}
+		var title = $(".title");
+		for (i = 0 ; i < title.length; i++){
+			//console.log(title[i].innerText.substring(0,10));	
+			if(title[i].innerText.length > 10){
+				//title[i].text(title[i].innerText.substring(0,10)) + "...";
+				$(".item").find("a").eq(i).text(title[i].innerText.substring(0,10) + "...");
+			}
+			$(".item").find("a").eq(i).text(title[i].innerText);
+		}
 		console.log(title);
 		// nav 해당 페이지 글색
 		$(".active").css("color", "#ec6090");
