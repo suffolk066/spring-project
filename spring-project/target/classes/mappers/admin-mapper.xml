@@ -22,10 +22,12 @@
 	</select>
 	
 	<insert id="insertMovie">
-		insert into tbl_movie(movie_no, movie_title, movie_story, posters, staff_list,
-							  genre, rating, runtime, release_date, score, status)
-		values(seq_movie_no.nextval, #{movie_title}, #{movie_story}, #{posters}, #{staff_list},
-		 							 #{genre}, #{rating}, #{runtime}, #{release_date}, #{score}, #{status})
+		insert into tbl_movie(movie_no, movie_title, movie_story, posters, stlls,
+							  staff_list, genre, nation, movie_type, rating, runtime,
+							  release_date, score, status)
+		values(seq_movie_no.nextval, #{movie_title}, #{movie_story}, #{posters}, #{stlls},
+									 #{staff_list}, #{genre}, #{nation}, #{movie_type},
+									 #{rating}, #{runtime}, #{release_date}, #{score}, #{status})
 	</insert>
 	
 	<update id="updateMovie">
@@ -34,6 +36,8 @@
 			movie_story = #{movie_story},
 			staff_list = #{staff_list},
 			genre = #{genre},
+			nation = #{nation},
+			movie_type = #{movie_type},
 			runtime=  #{runtime},
 			release_date = #{release_date},
 			score = #{score},
