@@ -12,8 +12,11 @@ public class MovieVo {
     private String movie_title;
     private String movie_story;
     private String posters;
+    private String stlls;
     private String staff_list;
     private String genre;
+    private String nation;
+    private String movie_type;
     private String rating;
     private String runtime;
     private String release_date;
