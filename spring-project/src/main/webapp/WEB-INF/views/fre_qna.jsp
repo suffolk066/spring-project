@@ -17,6 +17,13 @@
 .nav {
 	--bs-nav-link-hover-color: #f290b1;
 }
+.gaming-library .item ul li:last-child{
+	text-align: left;
+	width:40%;
+}
+.h_title {
+	width: 800px;
+}
 </style>
 	<div class="container">
 		<div class="row">
@@ -45,26 +52,24 @@
 							</div>
 						</div>
 						<div class="col-lg-12">
+						<!-- 타이틀 시작 -->
 							<div class="item">
 								<ul>
 									<li><h4>글번호</h4></li>
 									<li style="margin-left:30px;"><h4>구분</h4></li>
-									<li style="margin-left:5px; margin-right: 200px;"><h4>제목</h4></li>
-									<li style="margin-left:10px;"><h4>등록날짜</h4></li>
+									<li><h4>제목</h4></li>
 								</ul>
 							</div>
-<%-- 								<c:forEach var="i2" begin="1" end="10"> --%>
+						<!-- 타이틀 끝 -->	
 							<div class="item">
 									<ul>
 										<li style="margin-right:10px; margin-left:20px;"><h4>3</h4></li>
 										<li><h4>주차</h4></li>
-										<li style="margin-right: 230px;"><h4>
+										<li class="li_title"><h4 class="h_title">
 												<a href="#" class="title_qna">무료주차 이용 가능 한가요?</a>
 											</h4></li>
-										<li><h4>2023/01/06</h4></li>
 									</ul>
-									<div class="answer" style="display:none; margin-top:10px;">
-											<h6>Q. 무료주차 이용 가능 한가요?</h6><br>
+									<div class="answer" style="display:none; margin-left:330px; margin-top:10px;">
 											<h6>A. 당일 영화권을 보여주시면 가능합니다.</h6>	
 									</div>
 							</div>
@@ -72,13 +77,11 @@
 									<ul>
 										<li style="margin-right:10px; margin-left:20px;"><h4>2</h4></li>
 										<li><h4>시설</h4></li>
-										<li style="margin-right: 230px;"><h4>
+										<li style="margin-right: 230px;"><h4 class="h_title">
 												<a href="#" class="title_qna">매점 위치</a>
 											</h4></li>
-										<li><h4>2023/01/06</h4></li>
 									</ul>
-									<div class="answer" style="display:none; margin-top:10px;">
-											<h6>Q. 매점 위치</h6><br>
+									<div class="answer" style="display:none; margin-left:330px; margin-top:10px;">
 											<h6>A. 3층에 있습니다.</h6>	
 									</div>
 							</div>
@@ -86,13 +89,11 @@
 									<ul>
 										<li style="margin-right:10px; margin-left:20px;"><h4>1</h4></li>
 										<li><h4>결제</h4></li>
-										<li style="margin-right: 230px;"><h4>
+										<li style="margin-right: 230px;"><h4 class="h_title">
 												<a href="#" class="title_qna">인터넷 결제는 어떻게 하나요?</a>
 											</h4></li>
-										<li><h4>2023/01/06</h4></li>
 									</ul>
-									<div class="answer" style="display:none; margin-top:10px;">
-											<h6>Q. 인터넷 결제는 어떻게 하나요?</h6><br>
+									<div class="answer" style="display:none; margin-left:330px; margin-top:10px;">
 											<h6>A. 결제 페이지에서 포인트로 가능합니다.</h6>	
 									</div>
 							</div>
@@ -125,15 +126,15 @@
 		// nav 해당 페이지 글색
 		$(".active").css("color", "#ec6090");
 		// 제목 10자리 이상 ..표시
-		var title_qna = $(".title_qna");
-		for (i = 0 ; i < title_qna.length; i++){
-			//console.log(title_qna[i].innerText.substring(0,10));	
-			if(title_qna[i].innerText.length > 10){
-				//title_qna[i].text(title_qna[i].innerText.substring(0,10)) + "...";
-				$(".item").find("a").eq(i).text(title_qna[i].innerText.substring(0,10) + "...");
-			}
-			$(".item").find("a").eq(i).text(title_qna[i].innerText);
-			// 제목 클릭하면 자주하는 질문 답변 등장
+// 		var title_qna = $(".title_qna");
+// 		for (i = 0 ; i < title_qna.length; i++){
+// 			//console.log(title_qna[i].innerText.substring(0,10));	
+// 			if(title_qna[i].innerText.length > 10){
+// 				//title_qna[i].text(title_qna[i].innerText.substring(0,10)) + "...";
+// 				$(".item").find("a").eq(i).text(title_qna[i].innerText.substring(0,10) + "...");
+// 			}
+// 			$(".item").find("a").eq(i).text(title_qna[i].innerText);
+// 			// 제목 클릭하면 자주하는 질문 답변 등장
 // 			$(".item").find("a").eq(i).click(function(e){
 // 				e.preventDefault();
 // 				console.log($(".item").find("a").eq(i).closest("ul").next().find("div"));
@@ -152,7 +153,7 @@
 // 					$(this).attr("data-answer-show", "true");
 // 	 			}
 // 			});
-		}
+// 		}
 		
 		// 제목 클릭하면 자주하는 질문 답변 등장
 		$(".title_qna").each(function(e){

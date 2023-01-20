@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@include file="../include/header.jspf" %>
+<link rel="stylesheet" href="/assets/css/admin_qna.css">
 <script>
 $(document).ready(function() {
 	$('.list-group > a').click(function(e){
@@ -43,23 +44,7 @@ $(document).ready(function() {
     </div>
      <!-- 사이드 바 메뉴 끝-->
   </div>
-<style>
-.page-link {
-	background-color: #1f2122;
-	border-color: #1f2122;
-}
 
-.span {
-	color: #ec6090;
-}
-.nav-link {
-	color: #ccc;
-	font-size: 20px;
-}
-.nav {
-	--bs-nav-link-hover-color: #f290b1;
-}
-</style>
 	<div class="container">
 		<div class="row">
 			<div class="col-lg-12">
@@ -100,10 +85,10 @@ $(document).ready(function() {
 									<li style="margin-left:10px"><h4>답변여부</h4></li>
 								</ul>
 							</div>
-								<c:forEach items="${list}" var="qnaVo">
+								<c:forEach items="${list}" var="qnaVo" varStatus="loop">
 							<div class="item">
 									<ul>
-										<li style="margin-right:10px; margin-left:20px;"><h4>${qnaVo.qna_no}</h4></li>
+										<li style="margin-right:10px; margin-left:20px;"><h4>${fn:length(list)-loop.index}</h4></li>
 										<li><h4>${qnaVo.userid}</h4></li>
 										<li style="margin-right:180px" id="title"><h4>
 												<a  href="${contextPath}/movie/admin/qna_detail?qna_no=${qnaVo.qna_no}&page=${pagingDto.page}" class="title">${qnaVo.qna_title}</a>
