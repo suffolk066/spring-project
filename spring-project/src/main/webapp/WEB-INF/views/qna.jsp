@@ -47,7 +47,7 @@
 								<a id="a_wirte" href="#"><i class="fa fa-pencil fa-2x"
 									aria-hidden="true" data-userid="${qnaVo.userid}"></i></a>
 							</div>
-						</div>
+						</div> 
 						<div class="col-lg-12">
 							<div class="item">
 								<ul>

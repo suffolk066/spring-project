@@ -2,7 +2,7 @@
 	pageEncoding="UTF-8"%>
 <%@include file="../include/header.jspf" %>
 <style> 
-.page-link {
+.page-link { 
 	background-color: #1f2122;
 	border-color: #1f2122;
 }

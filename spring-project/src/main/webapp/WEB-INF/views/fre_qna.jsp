@@ -62,7 +62,7 @@
 							</div>
 						<!-- 타이틀 끝 -->	
 							<div class="item">
-									<ul>
+									<ul> 
 										<li style="margin-right:10px; margin-left:20px;"><h4>3</h4></li>
 										<li><h4>주차</h4></li>
 										<li class="li_title"><h4 class="h_title">

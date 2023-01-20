@@ -87,7 +87,7 @@ $(document).ready(function() {
 							</div>
 								<c:forEach items="${list}" var="qnaVo" varStatus="loop">
 							<div class="item">
-									<ul>
+									<ul> 
 										<li style="margin-right:10px; margin-left:20px;"><h4>${fn:length(list)-loop.index}</h4></li>
 										<li><h4>${qnaVo.userid}</h4></li>
 										<li style="margin-right:180px" id="title"><h4>

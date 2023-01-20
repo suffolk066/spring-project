@@ -1,0 +1,16 @@
+@charset "UTF-8";
+.page-link {
+	background-color: #1f2122;
+	border-color: #1f2122;
+}
+
+.span { 
+	color: #ec6090;
+}
+.nav-link {
+	color: #ccc;
+	font-size: 20px;
+}
+.nav {
+	--bs-nav-link-hover-color: #f290b1;
+}

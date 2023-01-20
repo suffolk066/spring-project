@@ -218,7 +218,7 @@ $(document).ready(function() {
                    style="position: relative;left: 90%;bottom: 68px;">
                   글쓰기
                 </a>
-              </div>
+              </div> 
             </div>
             <div>
               <table class="table list-table">
