@@ -100,17 +100,17 @@ $(document).ready(function(){
 	                        <h6>${movie_list.movie_title}</h6>
 	                      </div>
 	                    </div>
-	                   <h4><a href="${contextPath}/movie/detail?movie_no=${movie_list.movie_no}" style="font-size:18px;">${movie_list.movie_title}</a><br><span>249K Downloads</span></h4>
-	                    <ul>
-	                      <li><i class="fa fa-star"></i> ${movie_list.score}</li>
-	                      <li><i class="fa fa-eye"></i> 2.3M</li>
-	                    </ul>
+	                   <h4><a href="${contextPath}/movie/detail?movie_no=${movie_list.movie_no}" style="font-size:18px;">${movie_list.movie_title}</a><br><i class="fa fa-star" style="color:yellow;"></i> ${movie_list.score}</h4>
+<!-- 	                    <ul> -->
+<%-- 	                      <li><i class="fa fa-star"></i> ${movie_list.score}</li> --%>
+<!-- 	                      <li><i class="fa fa-eye"></i> 2.3M</li> -->
+<!-- 	                    </ul> -->
 	                   </div>
 	                   </c:forEach>
 	              <!-- 영화 한 편 끝 -->
                  </div>
                 </div><!--***** 상영작 ***** -->
-            
+             
           		<!-- ***** 예정 영화 ***** -->
           		<div id="pre">
 	                <div class="owl-features owl-carousel">
@@ -123,11 +123,11 @@ $(document).ready(function(){
 		                        <h6>${pre_movie_list.movie_title}</h6>
 		                      </div>
 		                    </div>
-		                   <h4><a href="${contextPath}/movie/detail?movie_no=${pre_movie_list.movie_no}" style="font-size:18px;">${pre_movie_list.movie_title}</a><br><span>249K Downloads</span></h4>
-		                    <ul>
-		                      <li><i class="fa fa-star"></i> 4.8</li>
-		                      <li><i class="fa fa-eye"></i> 2.3M</li>
-		                    </ul>
+		                   <h4><a href="${contextPath}/movie/detail?movie_no=${pre_movie_list.movie_no}" style="font-size:18px;">${pre_movie_list.movie_title}</a></h4>
+<!-- 		                    <ul> -->
+<!-- 		                      <li><i class="fa fa-star"></i> 4.8</li> -->
+<!-- 		                      <li><i class="fa fa-eye"></i> 2.3M</li> -->
+<!-- 		                    </ul> -->
 		                    </div>
 		                    </c:forEach>
 		              <!-- 영화 한 편 끝 -->
