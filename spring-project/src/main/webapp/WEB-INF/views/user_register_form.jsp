@@ -5,12 +5,15 @@
 $(document).ready(function() {
 	$("#btnRegister").click(function() {
 		console.log("등록버튼");
+		
+		if ($("#userid").val().trim() == "" ||
+				$("#username").val().trim() == "" ||
+				$("#email").val().trim() == "" ||
+				$("#userpw").val().trim() == "") {
+			alert("입력 항목을 확인해주세요.");
+			return false;
+		}
 	});
-	
-	if ($("#userpw").val().trim() != $("#userpw2").val().trim()) {
-		alert("비밀번호가 일치하지 않습니다.");
-		return false;
-	}
 	
 	$("#btnCheckDup").click(function() {
 		var userid = $("#userid").val();
@@ -66,7 +69,7 @@ $(document).ready(function() {
                                      placeholder="아이디" name="userid">
                          </div>
                          <div class="col-sm-6">
-                               <button type="button" style="background-color:#e75e8d" id="btnCheckDup">아이디 중복 체크</button>
+                               <button type="button" style="background-color:#e75e8d; margin-top:10px" id="btnCheckDup">아이디 중복 체크</button>
                          </div>
                          <div class="alert alert-success"
                           style="display:none" id="checkResult">
@@ -82,15 +85,10 @@ $(document).ready(function() {
                     		<label class="label">비밀번호</label>
                              <input type="password"
                                  id="userpw" name="userpw" placeholder="패스워드">
-                              <input type="password" 
-                                 id="userpw2" name="userpw2" placeholder="패스워드 확인">
                         </div>
                              <div class="col-sm-3">
-                             
                            </div>
                      </div>   
-                     <!-- 비밀번호 일치 불일치 따라message출력 -->          
-                           <div id=userpwCheck>message</div>
                   </li>
                   <li>   
                      <label class="label">이름&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</label>
