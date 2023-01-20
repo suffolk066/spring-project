@@ -35,7 +35,11 @@
 	  list = list.split(', ');
 	  var director = list[0].substr(5); // 감독
 	  var staff_list = list[1].substr(6); // 출연진
-	  $("#director").text('감독  ' + director);
+	  staff_list = staff_list.replace(/,/g, ", ");
+	  //staff_list = staff_list.split(",");
+	  $("#director").text("감독  " + director);
+	  console.log(staff_list);
+	  $("#staff_list").text("감독 : " + director + " / " + "출연진 : " + staff_list);
 	  
 	  // 예약 날짜 구하기
 	  var date = "${movieVo.release_date}";
@@ -108,7 +112,6 @@
                       	<a  href="#btnStory"><span>줄거리</span></a>
                       	<a href="#btnStillCut"><span>스틸컷</span></a>
                       	<a href="#btnProducer"><span>감독 및 출연진</span></a>
-                      	<a href="#btnReview"><span>리뷰</span></a>
 	                 </div>
                   </div> 
                 </div>
@@ -186,34 +189,20 @@
           
           
           <!-- ***** 출연진 정보 ***** -->
-          <div class="other-games"  id="btnProducer">
+          <div class="most-popular"  id="btnProducer">
             <div class="row">
               <div class="col-lg-12">
                 <div class="heading-section">
                   <h4>
                   	<em style="margin-right: 865px">감독 및 출연진</em>
-<!--                   <a href="#" style="color:#ec6090">...</a> -->
                   </h4>
                 </div>
               </div>
-              <div class="col-lg-4"> <!-- 출연진 정보 시작 -->
-                <div class="item">
-                  <img src="/assets/images/game-01.jpg" alt="" class="templatemo-item">
-                  <h6>강형철</h6><span>감독</span>
-                </div>
-              </div> <!-- 출연진 정보 끝 -->
-              <div class="col-lg-4">
-                <div class="item">
-                  <img src="/assets/images/game-01.jpg" alt="" class="templatemo-item">
-                  <h6>강형철</h6><span>감독</span>
-                </div>
+              <!-- 출연진 정보 시작 -->
+              <div class="row">
+                <h5 id="staff_list"></h5>
               </div>
-              <div class="col-lg-4">
-                <div class="item">
-                  <img src="/assets/images/game-01.jpg" alt="" class="templatemo-item">
-                  <h6>강형철</h6><span>감독</span>
-                </div>
-              </div>
+              <!-- 출연진 정보 끝 -->
             </div>
           </div>
           <!-- ***** 출연진 끝 ***** -->
