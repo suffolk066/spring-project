@@ -61,4 +61,24 @@
 		values(#{cinema_name});
 	</insert>
 	
+	<!-- 유저 리스트 -->
+	
+	<select id="getUser" resultType="UserVo">
+		select * from mv_user
+		order by user_no desc
+	</select>
+		
+	<!-- 유저 선택 -->
+	<select id="getUserByNo" resultType="UserVo">
+		select * from mv_user
+		where user_no = #{user_no}
+	</select>
+	
+	<!-- 마일리지 충전 -->
+	<update id="updatePoint">
+		update mv_user set
+			userpoint = #{point}
+		where user_no = #{user_no}
+	</update>
+	
 </mapper>

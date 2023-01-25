@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 
 import com.kh.project.dao.AdminMovieDao;
 import com.kh.project.vo.MovieVo;
+import com.kh.project.vo.UserVo;
 
 @Service
 public class AdminMovieService {
@@ -46,5 +47,18 @@ public class AdminMovieService {
 	
 	public boolean insertCinemaName(String cinema_name) {
 		return dao.insertCinemaName(cinema_name);
+	}
+	
+	// 유저 관리
+	public List<UserVo> getUser() {
+		return dao.getUser();
+	}
+	
+	public UserVo getUserByNo(int user_no) {
+		return dao.getUserByNo(user_no);
+	}
+	
+	public boolean updatePoint(int user_no, int point) {
+		return dao.updatePoint(user_no, point);
 	}
 }

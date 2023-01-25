@@ -40,6 +40,7 @@ $(document).ready(function(){
 
           <!-- ***** 영화 리스트 ***** -->
 			<div class="row">
+
 				<div class="col-lg-3">
 					<div class="heading-section">
 						<h4><em><a href="#" id="a_now">현재 상영작</a></em></h4>
@@ -51,78 +52,102 @@ $(document).ready(function(){
 					</div>
 				</div>
 				<div class="col-lg-12" id="now">
-				<!-- 영화 한 편 시작:복사 시작 -->
-					<div class="col-lg-3 col-sm-6">
-						<div class="item">
-							<div class="thumb">
-								<h4 class="n_score"><i class="fa fa-check"> No.1</i></h4><br>
-								<a href="/movie/detail">
-									<img src="/assets/images/mov02.jpg" alt="" style="border-radius: 23px;">
-							    </a>
-							</div>
-							<div class="down-content">
-								<span><i class="fa fa-eye"></i> 183</span>
-								<h4>
-									<a href="/movie/detail">써니</a>
-								</h4>
-							</div>
-							<div class="down-content" style="margin-top:5px;">
-								<h6>
-									예매율 66%<br>
-									<span><i class="fa fa-star" style="color: yellow;"></i>	4.9</span>
-								</h6>
-							</div>
-							<div class="down-content">
-								<h6>2023년01월05일</h6>
-							</div>
-							<div class="down-content">
-								<div class="main-button" style="margin-top:10px">
-									<a href="/movie/booking">예매하기</a>
+					<div class="row">
+						<!-- 영화 한 편 시작:복사 시작 -->
+						<c:forEach items="${movie_list}" var="list" begin="0" end="3" varStatus="status">
+						<div class="col-lg-3 col-sm-6">
+							<div class="item">
+								<!-- 섬네일 -->
+								<div class="thumb">
+									<h4 class="n_score"><i class="fa fa-check"> No.${status.count}</i></h4><br>
+									<a href="/movie/detail?movie_no=${list.movie_no}">
+										<img src="${list.posters}" alt="" style="border-radius: 23px;">
+								    </a>
 								</div>
-								<span><i class="fa fa-eye"></i> 183</span>
+								
+								<!-- 타이틀 -->
+								<div class="down-content" style="margin-top:15px;height: 60px;">
+									<h4>
+										<a href="/movie/detail">${list.movie_title}</a>
+									</h4>
+								</div>
+								
+								<!-- 평점 -->
+								<div class="down-content" style="margin-top:5px;">
+									<h6>
+	<!-- 									예매율 66%<br> -->
+										<span><i class="fa fa-star" style="color: yellow;"></i>	${list.score}</span>
+									</h6>
+								</div>
+								
+								<!-- 상영일 -->
+								<div class="down-content">
+									<h6>${list.release_date}</h6>
+								</div>
+								
+								<!-- 예매 버튼 -->
+								<div class="down-content">
+									<div class="main-button" style="margin-top:10px">
+										<a href="/movie/booking">예매하기</a>
+									</div>
+								</div>
+								
 							</div>
 						</div>
+						</c:forEach>
+						<!--영화 한 편 끝: 복사 끝 -->
 					</div>
-				<!--영화 한 편 끝: 복사 끝 -->
 				</div> 
 				<!-- 현재 상영작 끝-->
 				
 				
 				<!-- 상영 예정작 시작-->
 				<div class="col-lg-12" id="pre">
-				<!-- 영화 한 편 시작:복사 시작 -->
-					<div class="col-lg-3 col-sm-6">
-						<div class="item">
-							<div class="thumb">
-								<h4 class="n_score"><i class="fa fa-check"> No.1</i></h4><br>
-								<a href="/movie/detail">
-									<img src="/assets/images/mov01.jpg" alt="" style="border-radius: 23px;">
-							    </a>
-							</div>
-							<div class="down-content">
-								<span><i class="fa fa-eye"></i> 183</span>
-								<h4>
-									<a href="/movie/detail">비열한 거리</a>
-								</h4>
-							</div>
-							<div class="down-content" style="margin-top:5px;">
-								<h6>
-									예매율 66%<br>
-									<span><i class="fa fa-star" style="color: yellow;"></i>	4.9</span>
-								</h6>
-							</div>
-							<div class="down-content">
-								<h6>2023년01월05</h6>
-							</div>
-							<div class="down-content">
-								<div class="main-button">
-									<a href="/movie/booking">예매하기</a>
+					<div class="row">
+						<!-- 영화 한 편 시작:복사 시작 -->
+						<c:forEach items="${pre_movie_list}" var="list" begin="0" end="3" varStatus="status">
+						<div class="col-lg-3 col-sm-6">
+							<div class="item">
+								<!-- 섬네일 -->
+								<div class="thumb">
+									<h4 class="n_score"><i class="fa fa-check"> No.${status.count}</i></h4><br>
+									<a href="/movie/detail?movie_no=${list.movie_no}">
+										<img src="${list.posters}" alt="" style="border-radius: 23px;">
+								    </a>
 								</div>
-								<span><i class="fa fa-eye"></i> 183</span>
+								
+								<!-- 타이틀 -->
+								<div class="down-content" style="margin-top:15px;height: 60px;">
+									<h4>
+										<a href="/movie/detail">${list.movie_title}</a>
+									</h4>
+								</div>
+								
+								<!-- 평점 -->
+								<div class="down-content" style="margin-top:5px;">
+									<h6>
+	<!-- 									예매율 66%<br> -->
+<%-- 										<span><i class="fa fa-star" style="color: yellow;"></i>	${list.score}</span> --%>
+									</h6>
+								</div>
+								
+								<!-- 상영일 -->
+								<div class="down-content">
+									<h6>${list.release_date}</h6>
+								</div>
+								
+								<!-- 예매 버튼 -->
+								<div class="down-content">
+									<div class="main-button" style="margin-top:10px">
+										<a href="/movie/booking">예매하기</a>
+									</div>
+								</div>
+								
 							</div>
 						</div>
+						</c:forEach>
+						<!--영화 한 편 끝: 복사 끝 -->
 					</div>
-				<!--영화 한 편 끝: 복사 끝 -->
 				</div> 
 				<!-- 상영 예정작 끝 -->
 			</div>

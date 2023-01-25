@@ -20,9 +20,23 @@ $(document).ready(function() {
 		
 	});
 	
-	// 회원 수정 버튼
-	$("#btnModify").click(function() {
-		location.href = "${contextPath}/movie/admin/member";
+
+	
+	$(".btnManage").click(function() {
+		$(this).find("input").val("");
+		var user_no = $(this).attr("data-no");
+		var url = "${contextPath}/movie/admin/member/get_user?user_no=" + user_no;
+		$.get(url, function(rData) {
+			$("#modal_user_no").val(rData.user_no);
+			$("#modal_userid").val(rData.userid);
+			$("#modal_username").val(rData.username);
+			$("#modal_userpoint").val(rData.userpoint);
+		})
+		
+		// 회원 수정 버튼
+		$("#btnUpdate").click(function() {
+			$("#frmUpdatePoint").submit();
+		});
 	});
 });
 </script>
@@ -75,28 +89,29 @@ $(document).ready(function() {
         </button>
       </div>
       <div class="modal-body">
-        <form>
+        <form id="frmUpdatePoint" action="${contextPath}/movie/admin/member/update_point">
+          <input type="hidden" id="modal_user_no" name="user_no">
+          
           <div class="form-group">
             <label for="userid" class="col-form-label">아이디:</label>
-            <input type="text" class="form-control" id="userid">
+            <input type="text" class="form-control" id="modal_userid" readonly>
           </div>
+          
           <div class="form-group">
             <label for="username" class="col-form-label">이름:</label>
-            <input type="text" class="form-control" id="username">
+            <input type="text" class="form-control" id="modal_username" readonly>
           </div>
-          <div class="form-group">
-            <label for="regdate" class="col-form-label">가입일:</label>
-            <input type="text" class="form-control" id="regdate">
-          </div>
+          
           <div class="form-group">
             <label for="userpoint" class="col-form-label">마일리지:</label>
-            <input type="text" class="form-control" id="userpoint">
+            <input type="text" class="form-control" id="modal_userpoint" name="point">
           </div>
+          
         </form>
       </div>
       <div class="modal-footer custom-modal-footer">
         <button type="button" id="btnDelete" class="btn btn-danger">삭제</button>
-        <button type="button" id="btnModify" class="btn custom-btn">수정</button>
+        <button type="button" id="btnUpdate" class="btn custom-btn">수정</button>
       </div>
     </div>
   </div>
@@ -126,19 +141,17 @@ $(document).ready(function() {
                   <th>아이디</th>
                   <th>이름</th>
                   <th>마일리지</th>
-                  <th>생성일</th>
                   <th>관리</th>
                 </tr>
-                <c:forEach var="i" begin="1" end="10">
+                <c:forEach items="${list}" var="list">
                 <tr>
-                  <td>${i}</td>
-                  <td>test${i}</td>
-                  <td>홍길동${i}</td>
-                  <td>${1 + i}</td>
-                  <td>2001-01-0${i + 1}</td>
+                  <td>${list.user_no}</td>
+                  <td>${list.userid}</td>
+                  <td>${list.username }</td>
+                  <td>${list.userpoint}</td>
                   <td>
                     <div class="main-border-button">
-                      <a href="#" data-toggle="modal" data-target="#exampleModal">
+                      <a href="#" class="btnManage" data-toggle="modal" data-target="#exampleModal" data-no="${list.user_no}">
                         관리하기
                       </a>
                     </div>

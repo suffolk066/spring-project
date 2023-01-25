@@ -11,10 +11,22 @@
 		order by release_date desc
 	</select>
 	
+	<select id="getMoviesByScore" resultType="MovieVo">
+		select * from tbl_movie
+		where status = '상영중'
+		order by score desc
+	</select>
+	
 	<select id="getPreMovies" resultType="MovieVo">
 		select * from tbl_movie
 		where status = '상영예정'
 		order by release_date desc
+	</select>
+	
+	<select id="getPreMoviesByScore" resultType="MovieVo">
+		select * from tbl_movie
+		where status = '상영예정'
+		order by score desc
 	</select>
 	
 	<select id="getDetail" resultType="MovieVo">

@@ -17,8 +17,16 @@ public class MainMovieService {
 		return dao.getMovies();
 	}
 	
+	public List<MovieVo> getMoviesByScore() {
+		return dao.getMoviesByScore();
+	}
+	
 	public List<MovieVo> getPreMovies() {
 		return dao.getPreMovies();
+	}
+	
+	public List<MovieVo> getPreMoviesByScore() {
+		return dao.getPreMoviesByScore();
 	}
 	
 	public MovieVo getDetail(int movie_no) {

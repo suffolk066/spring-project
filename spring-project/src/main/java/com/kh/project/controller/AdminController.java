@@ -19,6 +19,7 @@ import com.kh.project.vo.MovieVo;
 import com.kh.project.vo.PagingDto;
 import com.kh.project.vo.QnaCommentVo;
 import com.kh.project.vo.QnaVo;
+import com.kh.project.vo.UserVo;
  
 @Controller
 @RequestMapping(value = "/movie/admin/*")
@@ -66,7 +67,9 @@ public class AdminController {
 	}
 	
 	@RequestMapping(value = "/member", method = RequestMethod.GET)
-	public String showMember() {
+	public String showMember(Model model) {
+		List<UserVo> list = service.getUser();
+		model.addAttribute("list", list);
 		return "admin_member";
 	}
 	
@@ -165,5 +168,18 @@ public class AdminController {
 		int mno = Integer.parseInt(movie_no);
 		service.deleteMovie(mno);
 		return "redirect:/movie/admin/movie_management";
+	}
+	
+	@ResponseBody
+	@RequestMapping(value = "member/get_user", method = RequestMethod.GET)
+	public UserVo getUser(int user_no) {
+		UserVo userVo = service.getUserByNo(user_no);
+		return userVo;
+	}
+	
+	@RequestMapping(value = "member/update_point", method = RequestMethod.GET)
+	public String updateUser(int user_no, int point) {
+		service.updatePoint(user_no, point);
+		return "redirect:/movie/admin/member";
 	}
 }

@@ -20,8 +20,18 @@ public class MainMovieDao {
 		return list;
 	}
 	
+	public List<MovieVo> getMoviesByScore() {
+		List<MovieVo> list = sqlSession.selectList(NAMESPACE + "getMoviesByScore");
+		return list;
+	}
+	
 	public List<MovieVo> getPreMovies() {
 		List<MovieVo> list = sqlSession.selectList(NAMESPACE + "getPreMovies");
+		return list;
+	}
+	
+	public List<MovieVo> getPreMoviesByScore() {
+		List<MovieVo> list = sqlSession.selectList(NAMESPACE + "getPreMoviesByScore");
 		return list;
 	}
 	

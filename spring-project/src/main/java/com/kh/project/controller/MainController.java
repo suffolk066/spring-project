@@ -66,7 +66,11 @@ public class MainController {
 	}
 
 	@RequestMapping(value = "/list", method = RequestMethod.GET)
-	public String showMovieList() {
+	public String showMovieList(Model model) {
+		List<MovieVo> movie_list = movieService.getMoviesByScore();
+		List<MovieVo> pre_movie_list = movieService.getPreMoviesByScore();
+		model.addAttribute("movie_list", movie_list);
+		model.addAttribute("pre_movie_list", pre_movie_list);
 		return "movie_list";
 	}
 
