@@ -6,9 +6,9 @@
 <mapper namespace="mappers.reservation">
 	
 	<insert id="reservation">
-		insert into tbl_reservation(re_num, userid, re_movie, re_cinema, 
+		insert into tbl_reservation(re_num, user_no, re_movie, re_cinema, 
 									re_day, re_time, re_personnel, re_seats, re_cost)
-		values(seq_re_num.nextval, #{userid}, #{re_movie}, #{re_cinema},
+		values(seq_re_num.nextval, #{user_no}, #{re_movie}, #{re_cinema},
 				#{re_day}, #{re_time}, #{re_personnel}, #{re_seats}, #{re_cost})
 	</insert>
 </mapper>

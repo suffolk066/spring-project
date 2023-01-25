@@ -1,4 +1,5 @@
 <%@page import="com.kh.project.util.MovieShuffle"%>
+<%@page import="com.kh.project.vo.UserVo"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@include file="../include/header.jspf" %>
@@ -14,7 +15,7 @@ $(function() {
 	var select_theater = "";
 	var select_day = "";
 	var select_time = "";
-	
+	var movie_no; // 영화번호
 	var seats = []; // 선택 좌석(열,번)
 	
 	// 영화선택
@@ -36,10 +37,10 @@ $(function() {
 		$(this).css("background-color", "#e75e8d");
 		
 		select_movie = $(this).text().trim();
-		
+		movie_no = $(this).attr("data-movie_no");
 		// 비동기 요청
 		var url = "/movie/checkCinema";
-		var sData = {"cinema_movie" : select_movie};
+		var sData = {"cinema_movie_no" : movie_no};
 		$.post(url, sData, function(rData) { 
 			var cinema_names = rData; //rData 값 저장
 			var tds = $("#div-theater").find("td");
@@ -86,24 +87,28 @@ $(function() {
 		var url = "/movie/checkDate";
 		var sData = {
 				"cinema_name" : select_theater,
-				"cinema_movie" : select_movie,
+				"cinema_movie_no" : movie_no,
 				};
 		$.post(url, sData, function(rData) { 
 			var dates = [];
+			console.log("rData", rData);
 			for (i = 0; i < rData.length; i++) {
+				
 				var date = new Date(rData[i]);
-				var month = date.getMonth() + 1; // 월
-				if(month < 10) {
-					month = "0" + month;
-				}
-				var day = date.getDate(); // 일
-				if(day < 10) {
-					day = "0" + day;
-				}
-				var newDate = month + "/" + day; // 영화, 극장에 맞는 상영 날짜 얻기
+				console.log("date,", date);
+				var year = date.getFullYear() + "."; // 년
+				var month = date.getMonth() + 1 + "."; // 월
+// 				if(month < 10) {
+// 					month = "0" + month;
+// 				}
+				var day = date.getDate() + "."; // 일
+// 				if(day < 10) {
+// 					day = "0" + day;
+// 				}
+				var newDate = year + " " + month + " " + day; // 영화, 극장에 맞는 상영 날짜 얻기
 				dates.push(newDate); // 배열에 날짜 넣기
 			}
-			
+			console.log("dates", dates);
 			var tds = $("#div-day").find("td");
 			for(i = 0; i < dates.length; i++) {
 				for(j = 0; j < tds.length; j++) {
@@ -139,15 +144,25 @@ $(function() {
 		$(".td-day").css("background-color", "#fff")
 		$(this).css("background-color", "#e75e8d");
 		select_day = $(this).text().trim();
+		console.log(select_day.substring(7,8));
+		if(select_day.substring(7,8) == ".") {
+			var splitStrs = select_day.split(" ");
+			console.log("split, ", splitStrs);
+			select_day = splitStrs[0] + " 0" +splitStrs[1] + " " + splitStrs[2];
+			console.log("selecday, " + select_day);
+		}
 		// 비동기 요청
 		var url = "/movie/checkTime";
 		var sData = {
 				"cinema_name" : select_theater,
-				"cinema_movie" : select_movie,
+				"cinema_movie_no" : movie_no,
 				"day" : select_day
 				};
+		console.log(select_day);
+		console.log("mvno, ", movie_no);
 		$.post(url, sData, function(rData) {
 			var times = [];
+			console.log("시간, ", rData);
 			for (i = 0; i < rData.length; i++) {
 				var date = new Date(rData[i]);
 				var day = date.getDate(); // 일
@@ -196,10 +211,10 @@ $(function() {
 		var url = "/movie/checkSeat";
 		var sData = {
 				"cinema_name" : select_theater,
-				"cinema_movie" : select_movie,
-				"cinema_time" : "2023/" + select_day + " " + select_time
+				"cinema_movie_no" : movie_no,
+				"cinema_time" : select_day + " " + select_time
 				};
-		
+		console.log("좌석보여주기,",sData);
 		$.post(url, sData, function(rData) { 
 			$("#div-seat").remove();
 			$("#booking-div").append(rData);
@@ -274,8 +289,14 @@ $(function() {
 
 			// 결제하기()
 			$("#btn-payment-run").click(function(e) {
+				var userPoint = "${sessionScope.userVo.userpoint}";
+				console.log(userPoint);
+				if (userPoint < pay) {
+					alert("포인트가 부족합니다.");
+					return;
+				}
 				e.preventDefault();
-				$("#re_movie").val($("#span-movie").text()); // 예매한 영화
+				$("#re_movie").val(movie_no); // 예매한 영화
 				$("#re_cinema").val($("#span-theater").text()); // 예매한 극장
 				$("#re_day").val($("#span-day").text()); // 예매한 날짜정보(영화 날짜, 결제날X)
 				$("#re_time").val($("#span-time").text()); // 예매한 시간정보(영화 시간, 결제시간X)
@@ -306,6 +327,7 @@ $(function() {
                 <div class="heading-section">
                   <h4>예매하기</h4>
                 </div>
+                <% UserVo userVo = (UserVo)session.getAttribute("userVo"); %>
                	<div id="booking-div" class="row">
 					<div class="col-md-3"><!-- 영화선택 -->
 		                  <div class="ticketing-list">
@@ -320,8 +342,8 @@ $(function() {
 									<tbody>
 										<c:forEach items="${map.movie}" var="mList">
 										<tr>
-											<td class="td-movie">
-												${mList}
+											<td class="td-movie" data-movie_no="${mList.movie_no}">
+												${mList.movie_title}
 											</td>
 										</tr>
 										</c:forEach>
@@ -371,7 +393,7 @@ $(function() {
 										<c:forEach items="${map.date}" var="dList">
 										<tr>
 											<td class="td-day" style="color: gray">
-												<fmt:formatDate value="${dList}" pattern="MM/DD"/>
+												<fmt:formatDate value="${dList}"/>
 											</td>
 										</tr>
 										</c:forEach>
@@ -442,7 +464,7 @@ $(function() {
 			      <div class="modal-footer">
 			      	<h4 style="color: black; margin-right: 160px">총 금액 : xxx원</h4>
 			      	<form id="form-pay" action="reservation.run" method="post">
-			      		<input type="hidden" name="userid" value="hong"><!-- userid임시 설정  -->
+			      		<input type="hidden" name="user_no" value="${sessionScope.userVo.user_no}"><!-- userid임시 설정  -->
 			      		<input type="hidden" id="re_movie" name="re_movie" value="">
 			      		<input type="hidden" id="re_cinema" name="re_cinema" value="">
 			      		<input type="hidden" id="re_day" name="re_day" value="">

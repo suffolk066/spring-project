@@ -7,9 +7,9 @@ import lombok.Data;
 @Data
 public class ReservationVo {
 	private int re_num;
-	private String userid;
+	private int user_no;
 	private Timestamp re_date;
-	private String re_movie;
+	private int re_movie;
 	private String re_cinema;
 	private String re_day;
 	private String re_time;

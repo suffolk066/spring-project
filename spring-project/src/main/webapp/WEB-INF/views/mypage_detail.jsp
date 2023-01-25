@@ -7,11 +7,6 @@ $(document).ready(function() {
 		console.log("등록버튼");
 	});
 	
-	if ($("#userpw").val().trim() != $("#userpw2").val().trim()) {
-		alert("비밀번호가 일치하지 않습니다.");
-		return false;
-	}
-	
 	// 삭제 버튼 클릭시
 	$("#btnDel").click(function() {
 		e.preventDefault();
@@ -79,14 +74,10 @@ $(document).ready(function() {
                   </li>
                   <li>
                     <div class="form-group row">
-                    	<div>
-                        </div>
                         <div class="col-sm-12">
                     		<label class="label">비밀번호</label>
                              <input type="password" value="${vo.userpw}"
                                  id="userpw" name="userpw" placeholder="패스워드">
-                              <input type="password" 
-                                 id="userpw2" name="userpw2" placeholder="패스워드 확인">
                         </div>
                              <div class="col-sm-3">
                              
@@ -120,7 +111,7 @@ $(document).ready(function() {
      				 </li>
       					<li> 
      						 <label class="label">이메일&nbsp&nbsp&nbsp</label>
-     						 <input type="email" id="useremail" value="${useremail}" name="useremail" placeholder="email@gmail.com">
+     						 <input type="email" id="useremail" value="${vo.useremail}" name="useremail" placeholder="email@gmail.com">
      					</li>
      						 <div class="main-border-button" style="padding-left:500px">
                         		<button type="submit" id="btnMod">수정</button>

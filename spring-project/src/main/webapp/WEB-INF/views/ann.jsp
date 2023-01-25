@@ -58,10 +58,10 @@
 									<li><h4>조회수</h4></li>
 								</ul>
 							</div>
-								<c:forEach items="${list}" var="annVo" varStatus="loop">
+								<c:forEach items="${list}" var="annVo">
 							<div class="item">
 									<ul>
-										<li style="margin-left:10px;"><h4>${fn:length(list)-loop.index}</h4></li>
+										<li style="margin-left:10px;"><h4>${annVo.ann_no}</h4></li>
 										<c:choose>
 											<c:when test="${annVo.ann_category == 1}">
 												<li><h4>결제</h4></li>									

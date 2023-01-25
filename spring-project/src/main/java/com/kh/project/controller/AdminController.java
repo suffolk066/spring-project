@@ -1,25 +1,31 @@
 package com.kh.project.controller;
 
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.kh.project.service.AdminMovieService;
 import com.kh.project.service.AnnService;
+import com.kh.project.service.CinemaService;
 import com.kh.project.service.QnaCommentService;
 import com.kh.project.service.QnaService;
 import com.kh.project.vo.AnnVo;
+import com.kh.project.vo.CinemaVo;
 import com.kh.project.vo.MovieVo;
 import com.kh.project.vo.PagingDto;
 import com.kh.project.vo.QnaCommentVo;
 import com.kh.project.vo.QnaVo;
 import com.kh.project.vo.UserVo;
+import com.kh.project.vo.SeatDto;
  
 @Controller
 @RequestMapping(value = "/movie/admin/*")
@@ -29,6 +35,7 @@ public class AdminController {
 	@Autowired private AnnService annService;
 	@Autowired private QnaService qnaService;
 	@Autowired private QnaCommentService qnaCommentService;
+	@Autowired private CinemaService cinemaService;
 	
 	@RequestMapping(value = "/movie_management", method = RequestMethod.GET)
 	public String showMovie(Model model) {
@@ -40,9 +47,9 @@ public class AdminController {
 	@RequestMapping(value = "/theater_management", method = RequestMethod.GET)
 	public String showTheater(Model model) {
 		List<String> cinema_list = service.getCinemaList();
-		List<String> title_list = service.getTitleList();
+		List<MovieVo> movieVo = service.getTitleList();
 		model.addAttribute("cinema_list", cinema_list);
-		model.addAttribute("title_list", title_list);
+		model.addAttribute("movieVo", movieVo);
 		return "admin_theater";
 	}
 	
@@ -181,5 +188,29 @@ public class AdminController {
 	public String updateUser(int user_no, int point) {
 		service.updatePoint(user_no, point);
 		return "redirect:/movie/admin/member";
+
+	@RequestMapping(value = "/addCinema", method = RequestMethod.POST)
+	public String addCinema(CinemaVo vo, String seats) {
+		System.out.println("seats : " + seats);
+		String[] arrSeats = seats.split(","); // 좌석정보 분리
+		System.out.println("arr : " + arrSeats);
+		List<SeatDto> list = new ArrayList<>(); // dto를 담을 List 생성
+		for(String str : arrSeats) {
+			
+			int rowIndex = str.indexOf("열"); // "열" 글자의 index
+			String strRow = str.substring(0, rowIndex); // 열 정보(row) 
+			
+			int colIndex = str.indexOf("번"); // "번" 글자의 index
+			String strCol = str.substring(rowIndex+2, colIndex); // 행 정보(col) 
+			
+			int col = Integer.parseInt(strCol);
+			int row = Integer.parseInt(strRow);
+			
+			SeatDto dto = new SeatDto(row, col); // dto 생성
+			list.add(dto);
+		}
+		System.out.println("controlloer list : " + list);
+		boolean result = cinemaService.addCinema(vo, list);
+		return "redirect:/movie/admin/theater_management";
 	}
 }

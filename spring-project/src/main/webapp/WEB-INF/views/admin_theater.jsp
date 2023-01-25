@@ -28,15 +28,43 @@ $(document).ready(function() {
 			console.log("추가한 영화관 이름 : " + name);
 		}
 		$("#cinema_name").val(name); // select or input에서 받아온 영화관 이름을 hidden의 value로 설정
-		var movie = $("#cinema_movie").val();
+		//var movie = $("#cinema_movie").val();
 		
 		// 시간 포맷 처리
 		var input_time = $("#input_time").val(); // 2023-01-18T15:41
-		input_time = input_time.substr(2).split("T"); // 23-01-18
-		var date = input_time[0].replace("/-/g", "/"); // 23/01/18
+		
+		$("#cinema_time").val(input_time);
+		input_time = input_time.split("T"); // 2023-01-18
+		var date = input_time[0].replace("/-/g", "/"); // 2023/01/18
 		var time = input_time[1]; // 15:41
-		var cinema_time = (date + " " + time); // 23/01/18 15:41
+		var cinema_time = (date + " " + time); // 2023/01/18 15:41
 		$("#cinema_time").val(cinema_time) // cinema_time의 value로 설정
+		
+		
+		// 좌석정보
+		var row = $("#input_row").val();
+		var col = $("#input_col").val();
+		if(row <= 0 || col <= 0 || row >=16 || col >=16) {
+			alert("행, 열 정보는 1 이상 15 이하여야 합니다.");
+			return;
+		}
+		
+		console.log($("#cinema_name").val());
+		console.log($("#cinema_movie_no").val());
+		console.log($("#cinema_time").val());
+		var row = $("#input_row").val();
+		var col = $("#input_col").val();
+		var seats = "";
+		for(i = 0; i < row; i++) {
+			for(j = 0; j < col; j++) {
+				if(i == (row-1) && j == (col-1)) {
+					seats += ((i+1)+"열 " + (j+1)+"번");
+				} else {
+					seats += ((i+1)+"열 " + (j+1)+"번,");
+				}
+			}
+		}
+		$("#seats").val(seats);
 		$("#frmCinema").submit();
 	});
 });
@@ -95,7 +123,7 @@ $(document).ready(function() {
 
                 <div class="row">
                   <div class="form-area" style="margin-top:10px">
-                    <form class="form-input" id="frmCinema" action="#" method="GET">
+                    <form class="form-input" id="frmCinema" action="addCinema" method="post">
                         
                       <!-- 상영관 선택 및 추가 -->
 					  <div class="row row-theater-top">
@@ -118,10 +146,10 @@ $(document).ready(function() {
 					  <div class="row row-theater">
 					    <div class="col-md-12">
 					      <h4>영화 선택</h4>
-					      <select id="cinema_movie" class="form-control" name="cinema_movie">
+					      <select id="cinema_movie_no" class="form-control" name="cinema_movie_no">
 					        <option value="disabled" selected disabled hidden="">영화 선택</option>
-					        <c:forEach items="${title_list}" var="title_list">
-					        <option>${title_list}</option>
+					        <c:forEach items="${movieVo}" var="vo">
+					        <option value="${vo.movie_no}">${vo.movie_title}</option>
 					        </c:forEach>
 					      </select>
 					    </div>
@@ -137,7 +165,22 @@ $(document).ready(function() {
 					    </div>
 					  </div>
 					  <!-- // 상영시간 선택 -->
-
+						
+						<!-- 열, 행 선택 -->
+						<div class="row row-theater">
+						    <div class="col-md-5">
+						      <h4>열</h4>
+						      <input type="number" id="input_row" required="required">
+						    </div>
+						    <div class="col-md-2"></div>
+						    <div class="col-md-5">
+						      <h4>행</h4>
+						      <input type="number" id="input_col" required="required">
+						    </div>
+						    <input id="seats" type="hidden" name="seats" value="">
+						  </div>
+						<!-- 열, 행 선택 -->
+						
 					  <!-- 좌석선택  -->
 					  <div class="row">
                	      <div id="div-seat" style="margin-top: 30px; width: 100%;">

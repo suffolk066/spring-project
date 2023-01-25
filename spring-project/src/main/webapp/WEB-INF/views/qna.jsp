@@ -58,10 +58,10 @@
 									<li style="margin-left:10px"><h4>답변여부</h4></li>
 								</ul>
 							</div>
-								<c:forEach items="${list}" var="qnaVo" varStatus="loop">
+								<c:forEach items="${list}" var="qnaVo">
 							<div class="item">
 									<ul>
-										<li style="margin-right:10px; margin-left:20px;"><h4>${fn:length(list)-loop.index}</h4></li>
+										<li style="margin-right:10px; margin-left:20px;"><h4>${qnaVo.qna_no}</h4></li>
 										<li><h4>${qnaVo.userid}</h4></li>
 										<li style="margin-right:180px" id="title"><h4>
 												<a data-userid="${qnaVo.userid}" data-state="${qnaVo.qna_state}" data-qna_no="${qnaVo.qna_no}" data-page="${pagindDto.page}" href="#" class="title">${qnaVo.qna_title}</a>
@@ -175,9 +175,9 @@
 				location.href = "${contextPath}/movie/login";
 				return;
 			}
-			if((userid != writer || userid == writer) && qna_state == "1"){
+			if((userid != writer || userid == writer || userid == "admin") && qna_state == "1"){
 				location.href = "${contextPath}/movie/qna_board?writer=" + writer + "&qna_no=" + qna_no + "&page="+ page;
-			} else if(userid == writer &&  qna_state == "2") {
+			} else if((userid == writer || userid == "admin") &&  qna_state == "2") {
 				location.href = "${contextPath}/movie/qna_board?writer=" + writer + "&qna_no=" + qna_no + "&page="+ page;
 			} else if(userid != writer && qna_state == "2"){
 				alert("비공개 글 입니다");				

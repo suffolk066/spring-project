@@ -19,7 +19,7 @@ public class AdminMovieService {
 		return dao.getMovieList();
 	}
 	
-	public List<String> getTitleList() {
+	public List<MovieVo> getTitleList() {
 		return dao.getTitleList();
 	}
 	

@@ -23,8 +23,8 @@ public class AdminMovieDao {
 		return list;
 	}
 	
-	public List<String> getTitleList() {
-		List<String> list = sqlSession.selectList(NAMESPACE + "getTitleList");
+	public List<MovieVo> getTitleList() {
+		List<MovieVo> list = sqlSession.selectList(NAMESPACE + "getTitleList");
 		return list;
 	}
 	
@@ -57,7 +57,9 @@ public class AdminMovieDao {
 		return list;
 	}
 	
+	// 상영관추가
 	public boolean insertCinemaName(String cinema_name) {
+		System.out.println("상영관 추가 : " + cinema_name);
 		int count = sqlSession.insert(NAMESPACE + "insertCinemaName", cinema_name);
 		if (count > 0) return true;
 		return false;

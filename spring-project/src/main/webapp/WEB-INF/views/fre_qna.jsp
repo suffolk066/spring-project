@@ -78,7 +78,7 @@
 										<li style="margin-right:10px; margin-left:20px;"><h4>2</h4></li>
 										<li><h4>시설</h4></li>
 										<li style="margin-right: 230px;"><h4 class="h_title">
-												<a href="#" class="title_qna">매점 위치</a>
+												<a href="#" class="title_qna">매점은 몇 층에 있나요?</a>
 											</h4></li>
 									</ul>
 									<div class="answer" style="display:none; margin-left:330px; margin-top:10px;">
@@ -97,20 +97,8 @@
 											<h6>A. 결제 페이지에서 포인트로 가능합니다.</h6>	
 									</div>
 							</div>
-<%-- 								</c:forEach> --%>
 						</div>
 					</div>
-<!-- 					<div style="margin-top: 15px; text-align: center"> 페이징 시작  -->
-<!-- 		         	<div class="pagination"> -->
-<!-- 					  <a href="#">&laquo;</a> -->
-<%-- 					  <c:forEach var="i" begin="1" end="5"> --%>
-<!-- 					  	<a href="#" -->
-<%-- 					  		<c:if test="${i eq 1 }">style="background-color: #e75e8d"</c:if> --%>
-<%-- 					  	>${i}</a> --%>
-<%-- 					  </c:forEach> --%>
-<!-- 					  <a href="#">&raquo;</a> -->
-<!-- 					</div> -->
-<!-- 		         </div>페이징 끝  -->
 				</div>
 			</div>
 		</div>
@@ -134,39 +122,26 @@
 // 				$(".item").find("a").eq(i).text(title_qna[i].innerText.substring(0,10) + "...");
 // 			}
 // 			$(".item").find("a").eq(i).text(title_qna[i].innerText);
-// 			// 제목 클릭하면 자주하는 질문 답변 등장
-// 			$(".item").find("a").eq(i).click(function(e){
-// 				e.preventDefault();
-// 				console.log($(".item").find("a").eq(i).closest("ul").next().find("div"));
-// 				var target = $(".item").find("a").eq(i).closest("ul").next().eq(i).prevObject;
-// 				if($(this).attr("data-answer-show", "false")){
-// 					$(".answer").slideUp(1000);					
-// 				}
-// 				if($(this).attr("data-answer-show") == "true"){
-// 					target.slideUp(1000);
-// 					$(this).attr("data-answer-show", "false");
-// 					if($(".item").eq(i).attr("data-answer-show") == "true"){
-// 						target.slideDown(1000);
-// 					}
-//  				} else{
-// 					target.slideDown(1000);
-// 					$(this).attr("data-answer-show", "true");
-// 	 			}
-// 			});
 // 		}
 		
 		// 제목 클릭하면 자주하는 질문 답변 등장
 		$(".title_qna").each(function(e){
- 			var target = $(this).closest("ul").next();
-			$(".title_qna").attr("data-answer-show","false");
-			$(this).click(function(e){
+			var q = $(this);
+			q.click(function(e){
 				e.preventDefault();
-				if($(this).attr("data-answer-show") == "true"){
+				var target = $(this).closest("ul").next();
+	 			//console.log("target:", target);
+	 			var targetStatus = target.attr("data-answer-show");
+				$(".answer").each(function(){
+					var a = $(this);
+					a.attr("data-answer-show", "false").slideUp(1000);
+				});
+				if(targetStatus == "true"){
  					target.slideUp(1000);
-					$(this).attr("data-answer-show", "false");
+ 					target.attr("data-answer-show", "false");
 				} else {
 					target.slideDown(1000);
-					$(this).attr("data-answer-show", "true");
+					target.attr("data-answer-show", "true");
 	 			}
 			});
 		});

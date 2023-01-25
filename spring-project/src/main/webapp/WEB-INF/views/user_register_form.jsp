@@ -8,9 +8,18 @@ $(document).ready(function() {
 		
 		if ($("#userid").val().trim() == "" ||
 				$("#username").val().trim() == "" ||
-				$("#email").val().trim() == "" ||
+				$("#useremail").val().trim() == "" ||
 				$("#userpw").val().trim() == "") {
 			alert("입력 항목을 확인해주세요.");
+			return false;
+		}
+		var test1 = $("#userpw").val().trim();
+		var test2 = $("#userpw2").val().trim();
+		
+		console.log(test1);
+		console.log(test2);
+		if ($("#userpw").val().trim() != $("#userpw2").val().trim()) {
+			alert("비밀번호가 일치하지 않습니다.");
 			return false;
 		}
 	});
@@ -45,7 +54,6 @@ $(document).ready(function() {
 		});
 	});
 });
-
 </script>
   <div class="container">
     <div class="row">
@@ -85,8 +93,8 @@ $(document).ready(function() {
                     		<label class="label">비밀번호</label>
                              <input type="password"
                                  id="userpw" name="userpw" placeholder="패스워드">
-                        </div>
-                             <div class="col-sm-3">
+                             <input type="password"
+                                 id="userpw2" name="userpw2" placeholder="패스워드 확인">
                            </div>
                      </div>   
                   </li>
