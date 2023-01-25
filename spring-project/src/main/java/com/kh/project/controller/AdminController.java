@@ -188,7 +188,8 @@ public class AdminController {
 	public String updateUser(int user_no, int point) {
 		service.updatePoint(user_no, point);
 		return "redirect:/movie/admin/member";
-
+	}
+	
 	@RequestMapping(value = "/addCinema", method = RequestMethod.POST)
 	public String addCinema(CinemaVo vo, String seats) {
 		System.out.println("seats : " + seats);
