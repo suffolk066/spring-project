@@ -70,12 +70,22 @@ public class CinemaService {
 		System.out.println("list : " + list);
 		System.out.println();
 		System.out.println("vo.getCinema_name() : " + vo.getCinema_name());
-		boolean result = adminDao.insertCinemaName(vo.getCinema_name());
+		List<String> cinemaList = adminDao.getCinemaList();
+		boolean isExist = false;
+		for (String str : cinemaList) {
+			if (str.equals(vo.getCinema_name())) {
+				isExist = true;
+				break;
+			}
+		}
+		if (isExist == false) {
+			adminDao.insertCinemaName(vo.getCinema_name());
+		}
 		boolean result2 = false;
 		for(SeatDto dto : list) {
 			result2 = dao.addCinema(vo, dto);
 		}
-		if (result && result2) {
+		if (result2 == true) {
 			return true;
 		}
 		return false;
