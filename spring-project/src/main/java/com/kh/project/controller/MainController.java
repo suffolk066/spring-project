@@ -1,6 +1,7 @@
 package com.kh.project.controller;
 
 import java.sql.Date;
+import java.sql.Timestamp;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -15,7 +16,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
-
+import com.kh.project.service.AdminMovieService;
 import com.kh.project.service.AnnLikeService;
 import com.kh.project.service.AnnService;
 import com.kh.project.service.CinemaService;
@@ -44,6 +45,7 @@ public class MainController {
 	@Autowired private QnaCommentService qnaCommentService;
 	@Autowired private AnnLikeService annLikeService;
 	@Autowired private MainMovieService movieService;
+	@Autowired private AdminMovieService adminMovieService;
 	
 	@Autowired
 	private CinemaService cinemaService;
@@ -80,8 +82,8 @@ public class MainController {
 	@RequestMapping(value = "/booking", method = RequestMethod.GET)
 	public String booking(Model model) {
 		Map<String, Object> map = new HashMap<>();
-		map.put("movie", cinemaService.getMovieList()); // 영화
-		map.put("cinema", cinemaService.getCinemaList()); // 극장
+		map.put("movie", adminMovieService.getTitleList()); // 영화
+		map.put("cinema", adminMovieService.getCinemaList()); // 극장
 		map.put("date", cinemaService.getDateList()); // 날짜
 		map.put("time", cinemaService.getTimeList()); // 시간
 		model.addAttribute("map", map);
@@ -91,33 +93,38 @@ public class MainController {
 	// 비동기 요청(극장 보이기)
 	@RequestMapping(value = "/checkCinema", method = RequestMethod.POST)
 	@ResponseBody
-	public List<String> checkCinema(String cinema_movie) {
-		List<String> cinema_list_byMovie = cinemaService.getCinemaList(cinema_movie);
+	public List<String> checkCinema(int cinema_movie_no) {
+		List<String> cinema_list_byMovie = cinemaService.getCinemaList(cinema_movie_no);
 		return cinema_list_byMovie;
 	}
 	
 	// 비동기 요청(날짜 보이기)
 	@RequestMapping(value = "/checkDate", method = RequestMethod.POST)
 	@ResponseBody
-	public List<Date> checkDate(String cinema_name, String cinema_movie) {
-		List<Date> date_list_byCinema = cinemaService.getDateList(cinema_name, cinema_movie);
+	public List<Timestamp> checkDate(String cinema_name, int cinema_movie_no) {
+		List<Timestamp> date_list_byCinema = cinemaService.getDateList(cinema_name, cinema_movie_no);
+//		Timestamp t = date_list_byCinema.get(0);
+//		int y = t.getYear();
+		  
+		System.out.println("컨트롤러 timestamp : " + date_list_byCinema);
 		return date_list_byCinema;
 	}
 	
 	// 비동기 요청(시간 보이기)
 	@RequestMapping(value = "/checkTime", method = RequestMethod.POST)
 	@ResponseBody
-	public List<Date> checkTime(String cinema_name, String cinema_movie, String day) {
-		List<Date> time_list_byCinema = cinemaService.getTimeList(cinema_name, cinema_movie, day);
+	public List<Date> checkTime(String cinema_name, int cinema_movie_no, String day) {
+		List<Date> time_list_byCinema = cinemaService.getTimeList(cinema_name, cinema_movie_no, day);
+		System.out.print("date " + time_list_byCinema);
 		return time_list_byCinema;
 	}
 
 	// 비동기 요청(좌석보이기)
 	@RequestMapping(value = "/checkSeat", method = RequestMethod.POST)
-	public String checkSeat(String cinema_name, String cinema_movie, String cinema_time, Model model) {
-		List<CinemaVo> allList = cinemaService.getSeatAll(cinema_name, cinema_movie, cinema_time); // 좌석 정보
-		int maxCol = cinemaService.getSeatCol(cinema_name, cinema_movie, cinema_time); // 최대 열 수(col 수)
-		int seatsLeft = cinemaService.getSeatsLeft(cinema_name, cinema_movie, cinema_time); // 남은 좌석 수
+	public String checkSeat(String cinema_name, int cinema_movie_no, String cinema_time, Model model) {
+		List<CinemaVo> allList = cinemaService.getSeatAll(cinema_name, cinema_movie_no, cinema_time); // 좌석 정보
+		int maxCol = cinemaService.getSeatCol(cinema_name, cinema_movie_no, cinema_time); // 최대 열 수(col 수)
+		int seatsLeft = cinemaService.getSeatsLeft(cinema_name, cinema_movie_no, cinema_time); // 남은 좌석 수
 		model.addAttribute("maxCol", maxCol);
 		model.addAttribute("allList", allList);
 		model.addAttribute("seatsLeft", seatsLeft);
@@ -126,10 +133,16 @@ public class MainController {
 	
 	// 영화 예매처리
 	@RequestMapping(value = "/reservation.run", method = RequestMethod.POST)
-	public String reservationRun(ReservationVo vo, RedirectAttributes rttr) {
-		boolean result = reservationService.reservation(vo);
+	public String reservationRun(ReservationVo vo, HttpSession session, RedirectAttributes rttr) {
+		System.out.println("reRun : " + vo);
+		UserVo userVo = (UserVo)session.getAttribute("userVo");
+		boolean result = reservationService.reservation(vo, userVo);
 		if (result) {
 			rttr.addFlashAttribute("reservation_result", "success");
+			UserVo newUserVo = userService.getUserById(userVo.getUserid()); // user 정보 받기
+			System.out.println("newUserVo : " + newUserVo);
+			session.setAttribute("userVo", newUserVo); // 업데이트된(포인트) 유저 정보 세션에 넣기
+			System.out.println("session userVo : " + session.getAttribute("userVo"));
 			return "redirect:main";
 		}
 		rttr.addFlashAttribute("reservation_result", "fail");
@@ -153,6 +166,7 @@ public class MainController {
 		String loginid= request.getParameter("loginid");
 		String loginpw= request.getParameter("loginpw");
 		UserVo vo = userService.getUserById(loginid);
+		System.out.println("login vo1 : " + vo);
 		List<UserVo> list = userService.getUserList();
 		System.out.println(vo);
 		String page= "";
@@ -177,6 +191,7 @@ public class MainController {
 			session.setAttribute("loginResult","guest");
 			page = "redirect:/movie/login";
 		}
+		System.out.println("login vo : " + vo);
 		session.setAttribute("userVo", vo);
 		return page;
 	}

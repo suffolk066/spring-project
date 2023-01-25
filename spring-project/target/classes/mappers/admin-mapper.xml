@@ -11,10 +11,12 @@
 		order by release_date desc
 	</select>
 	
-	<select id="getTitleList" resultType="String">
-		select movie_title from tbl_movie
+	<select id="getTitleList" resultType="MovieVo">
+		select movie_title, movie_no from tbl_movie
 		order by release_date desc
 	</select>
+	
+	
 	
 	<select id="getMovieDetail" resultType="MovieVo">
 		select * from tbl_movie
@@ -58,7 +60,7 @@
 	
 	<insert id="insertCinemaName">
 		insert into cinema_list
-		values(#{cinema_name});
+		values(#{cinema_name})
 	</insert>
 	
 </mapper>

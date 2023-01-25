@@ -62,4 +62,11 @@
 		where userid = #{userid}
 	</delete>
 	
+	<!-- 포인트 사용 -->
+	<update id="usePoint">
+		update mv_user set
+			userpoint = #{userVo.userpoint} - #{cost}
+		where user_no = #{userVo.user_no}	
+	</update>
+	
 </mapper>

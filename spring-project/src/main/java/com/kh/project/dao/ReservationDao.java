@@ -20,6 +20,7 @@ public class ReservationDao {
 	private SqlSession sqlSession;
 	
 	public boolean reservation(ReservationVo vo) {
+		System.out.println("reDao, vo : " + vo);
 		int count = sqlSession.insert(NAMESPACE + "reservation", vo);
 		if (count > 0) {
 			return true;

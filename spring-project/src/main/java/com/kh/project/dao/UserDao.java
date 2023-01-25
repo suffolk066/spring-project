@@ -1,10 +1,13 @@
 package com.kh.project.dao;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
+
 import com.kh.project.vo.UserVo;
 
 @Repository
@@ -53,6 +56,18 @@ public class UserDao {
 	public boolean userDelete(String userid) {
 		int count = sqlSession.update(NAMESPACE + "userDelete", userid);
 		System.out.println("delcount"+count);
+		if (count > 0) {
+			return true;
+		}
+		return false;
+	}
+
+	public boolean usePoint(UserVo userVo, int cost) {
+		Map<String, Object> map = new HashMap<>();
+		map.put("userVo", userVo);
+		map.put("cost", cost);
+		System.out.println("userPoint : " + map);
+		int count = sqlSession.update(NAMESPACE + "usePoint", map);
 		if (count > 0) {
 			return true;
 		}

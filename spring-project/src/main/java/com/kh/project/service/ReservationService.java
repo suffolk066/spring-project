@@ -9,8 +9,10 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.kh.project.dao.CinemaDao;
 import com.kh.project.dao.ReservationDao;
+import com.kh.project.dao.UserDao;
 import com.kh.project.vo.ReservationVo;
 import com.kh.project.vo.SeatDto;
+import com.kh.project.vo.UserVo;
 import com.kh.project.exception.ReservationUpdateException;
 
 @Service
@@ -22,10 +24,17 @@ public class ReservationService {
 	@Autowired
 	private ReservationDao dao2;
 	
+	@Autowired
+	private UserDao userDao;
+	
 	@Transactional
-	public boolean reservation(ReservationVo vo){
+	public boolean reservation(ReservationVo vo, UserVo userVo){
 		try {
 			boolean result = dao2.reservation(vo); // 예매 insert
+			String strCost = vo.getRe_cost();
+			int cost = Integer.parseInt(strCost.split("원")[0]);
+			System.out.println("cost : " + cost);
+			boolean result3 = userDao.usePoint(userVo, cost); // 포인트 차감
 			String seats = vo.getRe_seats(); // form에서 보낸 좌석정보 받기
 			String[] arrSeats = seats.split(", "); // 좌석정보 분리
 			
@@ -48,7 +57,7 @@ public class ReservationService {
 			boolean result2 = dao.updateCinema(vo, list); // 극장 테이블 변경 update
 			System.out.println("result1 : "+ result);
 			System.out.println("result2 : "+ result2);
-			if (result && result2) {
+			if (result && result2 && result3) {
 				return true;
 			} else {
 				throw new com.kh.project.exception.ReservationUpdateException();
