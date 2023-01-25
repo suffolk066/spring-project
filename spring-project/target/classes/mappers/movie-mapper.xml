@@ -21,4 +21,4 @@
 		select * from tbl_movie
 		where movie_no = #{movie_no}
 	</select>
-</mapper>
+</mapper> 
