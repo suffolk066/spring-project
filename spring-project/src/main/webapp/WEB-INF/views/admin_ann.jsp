@@ -218,7 +218,7 @@ $(document).ready(function() {
                    style="position: relative;left: 90%;bottom: 68px;">
                   글쓰기
                 </a>
-              </div>
+              </div> 
             </div>
             <div>
               <table class="table list-table">
@@ -229,10 +229,10 @@ $(document).ready(function() {
 	                  <th>등록일</th>
 	                </tr>
                 </thead>
-                <c:forEach items="${list}"  var="annVo">
+                <c:forEach items="${list}"  var="annVo" varStatus="loop">
                 <tbody id="articleList">
 	                <tr>
-	                  <td>${annVo.ann_no}</td>
+	                  <td>${fn:length(list)-loop.index}</td>
 	                  <td><a href="#" data-toggle="modal" data-target="#exampleModal" class="a_ann_title" data-no="${annVo.ann_no}">${annVo.ann_title}</a></td>
 	                  <td>${annVo.ann_regdate}</td>
 	                </tr>

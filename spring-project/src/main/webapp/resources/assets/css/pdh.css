@@ -64,7 +64,7 @@
 .sidebar .list-group-item.active {
 	border: 1px solid #ec6090 !important;
 	background-color: #e75e8d !important;
-	color: #fff;
+	color: #fff !important;
 }
 
 .list-table {

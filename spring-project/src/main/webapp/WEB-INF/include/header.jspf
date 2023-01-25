@@ -22,8 +22,8 @@
 
     <!-- Additional CSS Files -->
     <link rel="stylesheet" href="/assets/css/fontawesome.css">
-    <link rel="stylesheet" href="/assets/css/kse.css">
     <link rel="stylesheet" href="/assets/css/templatemo-cyborg-gaming.css">
+    <link rel="stylesheet" href="/assets/css/kse.css">
     <link rel="stylesheet" href="/assets/css/owl.css">
     <link rel="stylesheet" href="/assets/css/animate.css">
     <link rel="stylesheet" href="/assets/css/kkh.css">
@@ -64,6 +64,11 @@ https://templatemo.com/tm-579-cyborg-gaming
 		});
 		console.log(window.location.href);
 		var url = window.location.href;
+		console.log("url", url);
+		var slashIndex = url.lastIndexOf("/");
+		console.log("slashIndex", slashIndex);
+		var subS = url.substring(slashIndex+1, slashIndex+4);
+		console.log("subS", subS);
 		switch (url) {
 		case "http://localhost/movie/list":
 			var test = $(".nav > li > a").eq(0);
@@ -90,14 +95,48 @@ https://templatemo.com/tm-579-cyborg-gaming
 			console.log(test);
 			test.addClass("menu");
 			break;
+		case "http://localhost/movie/fre_qna":
+			var test = $(".nav > li > a").eq(4);
+			console.log(test);
+			test.addClass("menu");
+			break;
+		case "http://localhost/movie/ann":
+			var test = $(".nav > li > a").eq(4);
+			console.log(test);
+			test.addClass("menu");
+			break;
+		case "http://localhost/movie/qna":
+			var test = $(".nav > li > a").eq(4);
+			console.log(test);
+			test.addClass("menu");
+			break;
+		
 		}	
+		
+		switch(subS) {
+		case "ann":
+			var test = $(".nav > li > a").eq(4);
+			console.log(test);
+			test.addClass("menu");
+			break;
+		case "qna":
+			var test = $(".nav > li > a").eq(4);
+			console.log(test);
+			test.addClass("menu");
+			break;
+		}
 		
 		var result = "${loginResult}";
 		console.log('결과 : ' + result);
 		if (result == "member") {
-			console.log("실행됨");
+			console.log("멤버실행됨");
 			$("#mypage").css("display","block");
 			$("#login").css("display","none");
+		} else if(result == "admin") {
+			console.log("관리자실행됨");
+			$("#mypage").css("display","none");
+			$("#login").css("display","none");
+			$("#logout").css("display","block");
 		}
 	});
   </script>
@@ -137,15 +176,13 @@ https://templatemo.com/tm-579-cyborg-gaming
                         <li><a href="${contextPath}/movie/event" style="color: #e75e8d">이벤트</a></li>
                         <li><a href="${contextPath}/movie/store" style="color: #e75e8d">스토어</a></li>
                         <li><a href="${contextPath}/movie/fre_qna" style="color: #e75e8d">고객센터 </a></li>
+                        <li><a href="logout" alt="logout" id="logout" name="logout" style="display:none">로그아웃</a></li>
                         <form action="mypage" name="mypage" id="mypage" style="display:none" method="post">
-	                        <li><a href="${contextPath}/movie/mypage" style="background-color: #e75e8d; color: #fff;" id="mypage">Mypage
-	                        <img src="/assets/images/profile-header.jpg" alt="mypage" style="max-width: 30px;
-																							  border-radius: 50%;
-																							  margin-left: 5px;"></a></li>
+	                        <li><a href="${contextPath}/movie/mypage" style="background-color: #e75e8d; color: #fff !important;" id="mypage">Mypage
+	                        <img src="/assets/images/profile-header.jpg" alt="mypage" style="max-width: 30px;															  margin-left: 5px;"></a></li>
 							<li><a href="logout" alt="logout">로그아웃</a></li>
 						</form>	
-                        
-                        <li><a href="${contextPath}/movie/login" style="background-color: #e75e8d; color: #fff;" id="login">로그인
+                        <li><a href="${contextPath}/movie/login" style="background-color: #e75e8d; color: #fff !important" id="login">로그인
                         <img src="/assets/images/profile-header.jpg" alt="login"></a></li>
                         
                     </ul>   

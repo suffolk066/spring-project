@@ -5,6 +5,7 @@ import java.sql.Timestamp;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
@@ -14,27 +15,25 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.context.request.RequestAttributes;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
-
 import com.kh.project.service.AdminMovieService;
 import com.kh.project.service.AnnLikeService;
 import com.kh.project.service.AnnService;
+import com.kh.project.service.CinemaService;
 import com.kh.project.service.MainMovieService;
 import com.kh.project.service.QnaCommentService;
 import com.kh.project.service.QnaService;
-import com.kh.project.service.UserService;
-import com.kh.project.service.CinemaService;
 import com.kh.project.service.ReservationService;
+import com.kh.project.service.UserService;
 import com.kh.project.vo.AnnLikeVo;
 import com.kh.project.vo.AnnVo;
+import com.kh.project.vo.CinemaVo;
 import com.kh.project.vo.MovieVo;
 import com.kh.project.vo.PagingDto;
 import com.kh.project.vo.QnaCommentVo;
 import com.kh.project.vo.QnaVo;
-import com.kh.project.vo.UserVo;
-import com.kh.project.vo.CinemaVo;
 import com.kh.project.vo.ReservationVo;
+import com.kh.project.vo.UserVo;
 
 @Controller
 @RequestMapping(value = "/movie/*")
@@ -284,10 +283,11 @@ public class MainController {
 	}
 	
 	@RequestMapping(value = "/delete", method = RequestMethod.GET)
-	public String runDelete(HttpServletRequest request) {
+	public String runDelete(HttpServletRequest request,HttpSession session) {
 		String userid = request.getParameter("userid");
 		boolean result = userService.userDelete(userid);
 		System.out.println("delresult"+result);
+		session.invalidate();
 		return "redirect:/movie/main";
 	}
 

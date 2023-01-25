@@ -26,6 +26,8 @@ $(document).ready(function() {
 			$("#modal_staff_list").val(rData.staff_list);
 			$("#modal_rating").val(rData.rating).prop("selected", true);
 			$("#modal_genre").val(rData.genre);
+			$("#modal_nation").val(rData.nation);
+			$("#modal_movie_type").val(rData.movie_type).prop("selected", true);
 			$("#modal_runtime").val(rData.runtime);
 			$("#modal_release_date").val(rData.release_date);
 			$("#modal_score").val(rData.score);
@@ -103,6 +105,18 @@ $(document).ready(function() {
         		
         		var genre = selectMovie.genre // 장르
         		
+        		var nation = selectMovie.nation; // 국가
+        		console.log("국가 : " + nation);
+        		
+        		var movie_type = selectMovie.keywords; // 영화 타입 2D or 3D
+        		var word = '3D';
+        		if (movie_type.includes(word)) {
+        			movie_type = '3D';
+        		} else {
+        			movie_type = '2D';
+        		}
+        		console.log(movie_type);
+        		
         		var rating = selectMovie.rating // 관람등급
         		rating = rating.substring(0, 2);
         		switch (rating) {
@@ -144,6 +158,13 @@ $(document).ready(function() {
         		});
         		staff_list = staff_list.slice(0, 4); // 4명만 배열에 넣기
         		
+        		// 스틸컷
+        		var stlls = selectMovie.stlls;
+        		stlls = stlls.split("|");
+        		console.log(stlls);
+        		console.log(stlls == "");
+        		
+        		// input 필드에 삽입
         		$("#movie_title").val(movie_title).text(movie_title);
         		$("#movie_story").val(plotText);
         		if (posters != "") {
@@ -155,7 +176,8 @@ $(document).ready(function() {
         		}
         		$("#staff_list").val("감독 : " + director + ", 출연진 : " + staff_list);
         		$("#genre").val(genre);
-        		
+        		$("#nation").val(nation);
+        		$('#movie_type').val(movie_type).prop("selected", true);
         		$('#rating').val(rating).prop("selected", true);
         		
         		$("#runtime").val(runtime + "분");
@@ -167,8 +189,8 @@ $(document).ready(function() {
         		if (today > compare_date) status = "상영종료";
         		if (today < compare_date) status = "상영예정";
         		if (today == compare_date) status = "상영중";
-        		console.log(status);
         		$("#status").val(status).prop("selected", true);
+        		$("#stlls").val(stlls);
         	});
         }) // fetch
 	}); // 영화 검색 api
@@ -256,6 +278,20 @@ $(document).ready(function() {
           <div class="form-group">
             <label for="genre" class="col-form-label">장르:</label>
             <input type="text" class="form-control" id="modal_genre" name="genre">
+          </div>
+          
+          <div class="form-group">
+            <label for="modal_nation" class="col-form-label">국가:</label>
+            <input type="text" class="form-control" id="modal_nation" name="nation">
+          </div>
+          
+          <div class="form-group">
+            <label for="modal_movie_type" class="col-form-label">영화 타입:</label>
+            <select class="form-select" aria-label="Default select example" id="modal_movie_type" name="movie_type">
+              <option value="disabled" selected disabled hidden="">타입을 선택해주세요</option>
+              <option>일반</option>
+              <option>3D</option>
+            </select>
           </div>
           
           <div class="form-group">
@@ -358,6 +394,11 @@ $(document).ready(function() {
             <div class="row">
               <div class="col-lg-6">
                 <div class="row" style="margin-top:10px;">
+                  <!-- 스틸컷 삽입 시작 -->
+                  <input type="hidden" id="stlls" name="stlls" value="">
+                  <!-- 스틸컷 삽입 끝 -->
+                  
+                  <!-- 영화 등록 폼 시작 -->
                   <div class="form-group">
                     <h4><label for="movie_title">영화 제목</label></h4>
                     <input type="text" class="form-control" id="movie_title" name="movie_title">
@@ -377,11 +418,25 @@ $(document).ready(function() {
                     <h4><label for="genre">장르</label></h4>
                     <input type="text" class="form-control" id="genre" name="genre">
                   </div>
-
+                  
+                  <div class="form-group movie-list">
+                    <h4><label for="nation">국가</label></h4>
+                    <input type="text" class="form-control" id="nation" name="nation">
+                  </div>
+                  
+                  <div class="form-group movie-list">
+                    <h4><label for="movie_type">타입</label></h4>
+                    <select class="form-select" aria-label="Default select example" id="movie_type" name="movie_type">
+                      <option value="disabled" selected disabled hidden="">타입을 선택해주세요</option>
+                      <option>일반</option>
+                      <option>3D</option>
+                    </select>
+                  </div>
+                    
                   <div class="form-group movie-list">
                     <h4><label for="rating">등급</label></h4>
                     <select class="form-select" aria-label="Default select example" id="rating" name="rating">
-                      <option value="0" selected>등급을 선택해주세요</option>
+                      <option value="disabled" selected disabled hidden="">등급을 선택해주세요</option>
                       <option value="1">전체관람가</option>
                       <option value="2">12세관람가</option>
                       <option value="3">15세관람가</option>
@@ -413,6 +468,7 @@ $(document).ready(function() {
                       <option value="상영종료">상영종료</option>
                     </select>
                   </div>
+                  <!-- 영화 등록 폼 끝 -->
                   
                 </div>
               </div>
