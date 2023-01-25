@@ -268,10 +268,11 @@ public class MainController {
 	}
 	
 	@RequestMapping(value = "/delete", method = RequestMethod.GET)
-	public String runDelete(HttpServletRequest request) {
+	public String runDelete(HttpServletRequest request,HttpSession session) {
 		String userid = request.getParameter("userid");
 		boolean result = userService.userDelete(userid);
 		System.out.println("delresult"+result);
+		session.invalidate();
 		return "redirect:/movie/main";
 	}
 

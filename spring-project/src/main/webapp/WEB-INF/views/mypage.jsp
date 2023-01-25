@@ -59,56 +59,7 @@ $(document).ready(function() {
                     				<li style="color:#fff; font-size:20px">등급점수:<span style="margin-left:250px; font-size:13px">10000</span></li>
 								</ul>                    		
                     		</div>
-                    		</div>
-                    	<div class="benefit-second col-lg-4">
-                    		<h5 style="margin-bottom:10px; text-align:center; margin-bottom:10px">자주 가는 극장</h5>
-                    		<table border="1px" style="margin-left:auto; margin-right:auto">
-                    			<tr>
-                    				<td style="float: left;
-										    width: 109px;
-										    height: 41px;
-										    margin: 0 3px 2px 0;
-										    padding: 2px;
-										    border: 2px solid #999;"><a href="#">상암동</a></td>
-                    				<td style="float: left;
-										    width: 109px;
-										    height: 41px;
-										    margin: 0 3px 2px 0;
-										    padding: 2px;
-										    border: 2px solid #999;"><a href="#">방구동</a></td>
-                    			</tr>
-                    			<tr>
-                    				<td style="float: left;
-										    width: 109px;
-										    height: 41px;
-										    margin: 0 3px 2px 0;
-										    padding: 2px;
-										    border: 2px solid #999;"></td>
-                    				<td style="float: left;
-										    width: 109px;
-										    height: 41px;
-										    margin: 0 3px 2px 0;
-										    padding: 2px;
-										    border: 2px solid #999;"></td>
-                    			</tr>
-                    			<tr>
-                    				<td style="float: left;
-										    width: 109px;
-										    height: 41px;
-										    margin: 0 3px 2px 0;
-										    padding: 2px;
-										    border: 2px solid #999;"></td>
-                    				<td style="float: left;
-										    width: 109px;
-										    height: 41px;
-										    margin: 0 3px 2px 0;
-										    padding: 2px;
-										    border: 2px solid #999;"></td>
-                    			</tr>
-                    		</table>
-                    		
-                    			
-                    			
+                    		</div>                   			
                     	</div>
                     	</div>
                     </div>
