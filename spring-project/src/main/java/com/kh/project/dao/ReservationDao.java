@@ -27,6 +27,13 @@ public class ReservationDao {
 		}
 		return false;
 	}
-	
+
+	public int getReservationCount(String user_no) {
+		return sqlSession.selectOne(NAMESPACE + "getReservationCount", user_no);
+	}
+
+	public int getMovieCount(String user_no) {
+		return sqlSession.selectOne(NAMESPACE + "getMovieCount", user_no);
+	}
 	
 }

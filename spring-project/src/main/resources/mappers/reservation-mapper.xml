@@ -11,4 +11,14 @@
 		values(seq_re_num.nextval, #{user_no}, #{re_movie}, #{re_cinema},
 				#{re_day}, #{re_time}, #{re_personnel}, #{re_seats}, #{re_cost})
 	</insert>
+	
+	<select id="getReservationCount" resultType="int">
+		select count(*) from tbl_reservation
+		where user_no = #{user_no}
+	</select>
+	
+	<select id="getMovieCount" resultType="int">
+		select count(distinct re_movie) from tbl_reservation
+		where user_no = #{user_no}
+	</select>
 </mapper>

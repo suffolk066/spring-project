@@ -69,4 +69,13 @@ public class ReservationService {
 		
 		
 	}
+
+	// 유저번호로 예매내역 카운팅 불러오기
+	public int getReservationCount(String user_no) {
+		return dao2.getReservationCount(user_no);
+	}
+
+	public int getMovieCount(String user_no) {
+		return dao2.getMovieCount(user_no);
+	}
 }
