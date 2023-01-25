@@ -175,9 +175,9 @@
 				location.href = "${contextPath}/movie/login";
 				return;
 			}
-			if((userid != writer || userid == writer) && qna_state == "1"){
+			if((userid != writer || userid == writer || userid == "admin") && qna_state == "1"){
 				location.href = "${contextPath}/movie/qna_board?writer=" + writer + "&qna_no=" + qna_no + "&page="+ page;
-			} else if(userid == writer &&  qna_state == "2") {
+			} else if((userid == writer || userid == "admin") &&  qna_state == "2") {
 				location.href = "${contextPath}/movie/qna_board?writer=" + writer + "&qna_no=" + qna_no + "&page="+ page;
 			} else if(userid != writer && qna_state == "2"){
 				alert("비공개 글 입니다");				
