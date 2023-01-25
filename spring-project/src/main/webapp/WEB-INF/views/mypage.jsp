@@ -39,19 +39,17 @@
 							</div>
 							<div class="benefit" style="margin-top: 100px">
 								<div class="row">
-									<div class="benefit-first col-lg-4">
+									<div class="col-lg-4">
 										<h5 style="margin-bottom: 10px; text-align: center">MY
 											MOVIE</h5>
 										<ul>
 											<li><a href="#">나의 예매내역</a><span
-												style="margin-left: 250px">0개</span></li>
+												style="margin-left: 250px">${rCount}개</span></li>
 											<li><a href="#">내가 본 영화</a><span
-												style="margin-left: 260px">0개</span></li>
-											<li><a href="#">내가 쓴 평점</a><span
-												style="margin-left: 260px">0개</span></li>
+												style="margin-left: 260px">${mCount}개</span></li>
 										</ul>
 									</div>
-									<div class="benefit-second col-lg-4">
+									<div class="col-lg-4">
 										<h5 style="margin-bottom: 10px; text-align: center">MY
 											POINT</h5>
 										<ul>
@@ -65,37 +63,6 @@
 													style="margin-left: 250px; font-size: 13px">10000</span></li>
 											</ul>
 										</div>
-									</div>
-									<div class="benefit-second col-lg-4">
-										<h5
-											style="margin-bottom: 10px; text-align: center; margin-bottom: 10px">자주
-											가는 극장</h5>
-										<table border="1px"
-											style="margin-left: auto; margin-right: auto">
-											<tr>
-												<td
-													style="float: left; width: 109px; height: 41px; margin: 0 3px 2px 0; padding: 2px; border: 2px solid #999;"><a
-													href="#">상암동</a></td>
-												<td
-													style="float: left; width: 109px; height: 41px; margin: 0 3px 2px 0; padding: 2px; border: 2px solid #999;"><a
-													href="#">방구동</a></td>
-											</tr>
-											<tr>
-												<td
-													style="float: left; width: 109px; height: 41px; margin: 0 3px 2px 0; padding: 2px; border: 2px solid #999;"></td>
-												<td
-													style="float: left; width: 109px; height: 41px; margin: 0 3px 2px 0; padding: 2px; border: 2px solid #999;"></td>
-											</tr>
-											<tr>
-												<td
-													style="float: left; width: 109px; height: 41px; margin: 0 3px 2px 0; padding: 2px; border: 2px solid #999;"></td>
-												<td
-													style="float: left; width: 109px; height: 41px; margin: 0 3px 2px 0; padding: 2px; border: 2px solid #999;"></td>
-											</tr>
-										</table>
-
-
-
 									</div>
 								</div>
 							</div>

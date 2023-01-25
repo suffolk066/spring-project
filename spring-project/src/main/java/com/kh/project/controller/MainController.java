@@ -6,6 +6,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import javax.mail.Session;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
@@ -327,7 +328,12 @@ public class MainController {
 
 	@RequestMapping(value = "/mypage", method = RequestMethod.GET)
 	public String showMypage(Model model,HttpSession Session) {
-		
+		UserVo userVo = (UserVo)Session.getAttribute("userVo");
+		String user_no = userVo.getUser_no();
+		int reservationCount = reservationService.getReservationCount(user_no); // count 값..
+		int movieCount = reservationService.getMovieCount(user_no); // movie count 값..
+		model.addAttribute("rCount", reservationCount);
+		model.addAttribute("mCount", movieCount);
 		return "mypage";
 	}
 
